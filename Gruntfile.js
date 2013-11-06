@@ -64,6 +64,7 @@ module.exports = function (grunt) {
                 src: [
                     "js/bower/jquery/jquery.js",
                     "js/bower/modernizr/modernizr.js",
+                    "js/plugins/superslides.js",
                     "js/project.js"
                 ],
                 dest: "js/production.js"
