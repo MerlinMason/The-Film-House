@@ -103,7 +103,7 @@ textarea:focus {
 
 .page-header {
     position:fixed;
-    z-index:3;
+    z-index:4;
     top:0;
     left:0;
     right:0;
@@ -148,7 +148,7 @@ textarea:focus {
             .retina-image("img/logo.png", "img/logo@2x.png", 139px, 73px);
         }
     }
-    &:hover, &.has-modal {
+    &:hover, &.is-active {
         background-position:0 -266px;
         .menu {
             opacity:1;
@@ -176,7 +176,7 @@ textarea:focus {
     right:0;
     left:0;
     bottom:0;
-    z-index:2;
+    z-index:3;
     background:@black-90;
     background:rgba(0,0,0,0.9);
     display:none;

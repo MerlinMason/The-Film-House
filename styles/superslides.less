@@ -37,18 +37,26 @@
 }
 
 .slides-pagination {
-    position: absolute;
-    z-index: 3;
-    bottom: 0;
-    text-align: center;
-    width: 100%;
+    position:absolute;
+    z-index:6;
+    top:@space;
+    left:@space;
+    right:60%;
+    &.secondary {
+        left:60%;
+        right:@space;
+    }
+    @media (max-width:@break-medium) {
+        .col-sm-2 {
+            padding-left:(@space/2);
+            padding-right:(@space/2);
+        }
+    }
 }
 .slides-pagination a {
-    border: 1px solid #fff;
-    .size(40px, 20px);
-    display: inline-block;
-    vertical-align: middle;
-    margin: 2px;
+    border:2px solid #fff;
+    height:40px;
+    display:block;
     overflow: hidden;
     direction: ltr;
     text-indent: -100%;
