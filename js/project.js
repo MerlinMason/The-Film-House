@@ -25,6 +25,7 @@
         init: function () {
             this.bindUIActions();
             $(".spinner").spin("standard");
+            $(".slides").superslides();
         },
 
         bindUIActions: function () {

@@ -1,10 +1,5 @@
-<footer class="page-footer">
-	<p class="copyright">&copy; <?php bloginfo('name'); ?>, <?php echo date('Y'); ?>. All rights reserved.</p>
-</footer>
-
-</div>
-
 <div class="spinner"></div>
+
 <?php
 	$production = false;
 	$theme = get_template_directory_uri();

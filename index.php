@@ -1,20 +1,36 @@
-<?php 
+<?php
 	get_header();
-		
-		echo '<h1>Welcome to wp-starter!</h1>';
 
-		while ( have_posts() ) : the_post();
-			the_title();
-			echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago';
-			the_content();
-		endwhile;
+		while ( have_posts() ) : the_post(); ?>
 
-		if (  $wp_query->max_num_pages > 1 ) : ?>
-			<nav class="postnav" class="cf">
-				<span class="prev fl"><?php previous_posts_link( __('More Recent Posts')); ?></span>
-				<span class="next fr"><?php next_posts_link( __('Older Posts')); ?></span>
-			</nav>
-		<?php endif;
+            <div class="slides">
+                <ul class="slides-container">
+                    <li>
+                        <img src="http://flickholdr.com/1000/800" alt="">
+                        <div class="container">
+                            Slide one
+                        </div>
+                    </li>
+                    <li>
+                        <img src="http://flickholdr.com/1000/800/space" alt="">
+                        <div class="container">
+                            Slide two
+                        </div>
+                    </li>
+                    <li>
+                        <img src="http://flickholdr.com/1000/800/tech" alt="">
+                        <div class="container">
+                            Slide three
+                        </div>
+                    </li>
+                </ul>
+                <nav class="slides-pagination">
+                    <a href="#" class="next">Next</a>
+                    <a href="#" class="prev">Previous</a>
+                </nav>
+            </div>
+
+		<?php endwhile;
 
 	get_footer();
 
