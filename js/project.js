@@ -25,11 +25,16 @@
         init: function () {
             this.bindUIActions();
             $(".spinner").spin("standard");
-            $(".slides").superslides();
+            $(".slides").superslides({
+                slide_speed: Modernizr.touch ? 300 : 800,
+                pagination: true,
+                scrollable: true
+            });
         },
 
         bindUIActions: function () {
-            $(".btn").on("click", function (e) { filmhouse.sayHello(e); });
+            $("a[href*=#]").on("click", function (e) { filmhouse.launchPageModal(e); });
+            $(".close-modal").on("click", function () { filmhouse.pageModalShouldClose(); });
         },
 
         windowLoaded: function () {
@@ -38,8 +43,28 @@
             });
         },
 
-        sayHello: function () {
-            console.log("Hello World");
+        launchPageModal: function (e) {
+            // hide existing
+            $(".modal:visible").hide();
+
+            // show this modal
+            var hash = $(e.currentTarget).attr("href").split("#")[1];
+            var modal = $(".modal." + hash);
+            $(modal).fadeIn("fast");
+
+            // vert-center content to browser window
+            var contentHeight = $(modal).find(".container").height();
+            var windowHeight = $(window).height();
+            var offset = (windowHeight / 2) - (contentHeight / 2);
+            $(modal).find(">.container").css({ marginTop : offset });
+
+            // persist menu
+            $(".page-header").addClass("has-modal");
+        },
+
+        pageModalShouldClose: function () {
+            $(".page-header").removeClass("has-modal");
+            $(".modal:visible").fadeOut("fast");
         }
 
     };

@@ -51,7 +51,8 @@ module.exports = function (grunt) {
         jshint: {
             options: {
                 globals: {
-                    Spinner: true
+                    Spinner: true,
+                    Modernizr: true
                 }
             },
             all: [
@@ -67,6 +68,7 @@ module.exports = function (grunt) {
                     "js/bower/jquery/jquery.js",
                     "js/bower/modernizr/modernizr.js",
                     "js/bower/spinjs/spin.js",
+                    "js/bower/jquery.animate-enhanced/scripts/src/jquery.animate-enhanced.js",
                     "js/plugins/jquery.spin.js",
                     "js/plugins/superslides.js",
                     "js/project.js"

@@ -44,20 +44,16 @@
     width: 100%;
 }
 .slides-pagination a {
-    border: 2px solid #222;
-    border-radius: 15px;
-    width: 10px;
-    height: 10px;
-    display: -moz-inline-stack;
+    border: 1px solid #fff;
+    .size(40px, 20px);
     display: inline-block;
     vertical-align: middle;
-    zoom: 1;
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=");
     margin: 2px;
     overflow: hidden;
     direction: ltr;
     text-indent: -100%;
+    opacity:0.4;
+    transition:opacity 0.2s;
 }
-.slides-pagination .current {
-    background: #222;
-}
+.slides-pagination a:hover { opacity:0.7; }
+.slides-pagination .current { opacity:1; }

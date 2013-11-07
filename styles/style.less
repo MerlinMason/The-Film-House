@@ -45,16 +45,6 @@ body {
     background:@black-90;
 }
 
-.spinner {
-    position:absolute;
-    top:0;
-    right:0;
-    left:0;
-    bottom:0;
-    background:@black-90;
-    z-index:5;
-}
-
 p { margin-bottom:@space; }
 
 
@@ -117,8 +107,16 @@ textarea:focus {
     top:0;
     left:0;
     right:0;
+    padding-bottom:(@space*2);
+    .grad-vertical(rgba(0,0,0,4), rgba(0,0,0,0));
+    background-size:1px 400px;
+    background-position: 0 -400px;
+    transition:all 0.2s ease-in-out;
     .menu {
         text-align:center;
+        opacity:0;
+        transition:all 0.2s 0 ease-in-out;
+        transform:translate3d(0,0,0);
         li {
             display:inline-block;
         }
@@ -126,8 +124,9 @@ textarea:focus {
         .current-post-ancestor a,
         a:link,
         a:visited {
-            color:@black-10;
-            transition:0.2s;
+            color:#fff;
+            color:rgba(255,255,255,0.7);
+            transition:color 0.2s;
         }
         a:hover,
         a:focus {
@@ -149,6 +148,13 @@ textarea:focus {
             .retina-image("img/logo.png", "img/logo@2x.png", 139px, 73px);
         }
     }
+    &:hover, &.has-modal {
+        background-position:0 -266px;
+        .menu {
+            opacity:1;
+            transition:all 0.2s 0.2s ease-in-out;
+        }
+    }
     @media (max-width:@break-small) { }
     @media (max-width:@break-medium) { }
     @media (max-width:@break-large) { }
@@ -159,3 +165,40 @@ textarea:focus {
 //  Content
 //----------------------------------------------------------------------------//
 
+
+//----------------------------------------------------------------------------//
+//  Modals
+//----------------------------------------------------------------------------//
+
+.modal {
+    position:absolute;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    z-index:2;
+    background:@black-90;
+    background:rgba(0,0,0,0.9);
+    display:none;
+}
+
+.close-modal {
+    .center-block();
+    appearance:none;
+    border:none;
+    background:transparent;
+    color:#fff;
+    color:rgba(255,255,255,0.7);
+    transition:color 0.2s;
+    font-size:@font-size-large;
+    cursor:pointer;
+    &:focus { outline:none; }
+    &:hover { color:#fff; }
+}
+
+.spinner {
+    &:extend(.modal);
+    display:block;
+    background:@black-90;
+    z-index:5;
+}

@@ -14,6 +14,7 @@
         "console": true,
         "module": true,
         "require": true,
-        "Spinner": true
+        "Spinner": true,
+        "Modernizr": true
     }
 }
