@@ -50,7 +50,9 @@ module.exports = function (grunt) {
 
         jshint: {
             options: {
-                jshintrc: ".jshintrc"
+                globals: {
+                    Spinner: true
+                }
             },
             all: [
                 ".jshintrc",
@@ -65,6 +67,7 @@ module.exports = function (grunt) {
                     "js/bower/jquery/jquery.js",
                     "js/bower/modernizr/modernizr.js",
                     "js/bower/spinjs/spin.js",
+                    "js/plugins/jquery.spin.js",
                     "js/plugins/superslides.js",
                     "js/project.js"
                 ],

@@ -4,6 +4,7 @@
 
 </div>
 
+<div class="spinner"></div>
 <?php
 	$production = false;
 	$theme = get_template_directory_uri();
@@ -18,7 +19,8 @@
 
 		echo '<script src ="' . $theme . '/js/bower/jquery/jquery.js"></script>';
 		echo '<script src ="' . $theme . '/js/bower/modernizr/modernizr.js"></script>';
-		echo '<script src ="' . $theme . '/js/bower/spinjs/spin.js"></script>';
+        echo '<script src ="' . $theme . '/js/bower/spinjs/spin.js"></script>';
+		echo '<script src ="' . $theme . '/js/plugins/jquery.spin.js"></script>';
 		echo '<script src ="' . $theme . '/js/plugins/superslides.js"></script>';
 		echo '<script src ="' . $theme . '/js/project.js"></script>';
 
