@@ -15,12 +15,12 @@
         shadow: false, // Whether to render a shadow
         hwaccel: true, // Whether to use hardware acceleration
         className: "spinner", // The CSS class to assign to the spinner
-        zIndex: 2e9, // The z-index (defaults to 2000000000)
+        zIndex: 1, // The z-index (defaults to 2000000000)
         top: "auto", // Top position relative to parent in px
         left: "auto" // Left position relative to parent in px
     };
 
-    var wpstarter = {
+    var filmhouse = {
 
         init: function () {
             this.bindUIActions();
@@ -28,11 +28,11 @@
         },
 
         bindUIActions: function () {
-            $(".btn").on("click", function (e) { wpstarter.sayHello(e); });
+            $(".btn").on("click", function (e) { filmhouse.sayHello(e); });
         },
 
         windowLoaded: function () {
-            $(".spinner").fadeOut("fast", function () {
+            $(".spinner").fadeOut("slow", function () {
                 $(this).spin(false);
             });
         },
@@ -44,8 +44,8 @@
     };
 
     // DOM Ready
-    $(function () { wpstarter.init(); });
+    $(function () { filmhouse.init(); });
     // Images Loaded
-    $(window).load(function () { wpstarter.windowLoaded(); });
+    $(window).load(function () { filmhouse.windowLoaded(); });
 
 } (jQuery));
