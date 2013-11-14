@@ -19,6 +19,7 @@
 @import "grid.less";
 // Third Party
 @import "superslides.less";
+@import "font-awesome.less";
 
 ::-moz-selection {
     background:@color-highlight;
@@ -165,6 +166,18 @@ textarea:focus {
 //  Content
 //----------------------------------------------------------------------------//
 
+.social {
+    list-style:none;
+    li {
+        display:inline-block;
+        margin:0 (@space/2) @space;
+        a {
+            color:@black-30;
+            transition:all 0.2s;
+            &:hover { color:#fff; }
+        }
+    }
+}
 
 //----------------------------------------------------------------------------//
 //  Modals
