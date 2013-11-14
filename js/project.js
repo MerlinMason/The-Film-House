@@ -70,7 +70,7 @@
         },
 
         pageModalShouldClose: function () {
-            filmhouse.menuShouldBeActive();
+            filmhouse.menuShouldBeInactive();
             $(".modal:visible").fadeOut("fast");
         },
 

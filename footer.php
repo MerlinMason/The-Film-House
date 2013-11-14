@@ -1,8 +1,34 @@
-<div class="modal about">
+<div class="modal about text-center">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, sit, quisquam, ipsa atque molestiae harum exercitationem perferendis quidem vero velit illo voluptate commodi mollitia. Ullam, dolores qui exercitationem provident ipsa.</p>
+                <?php the_field('about_popup_text', 'options'); ?>
+            </div>
+        </div>
+        <button class="close-modal">&times;</button>
+    </div>
+</div>
+
+<div class="modal contact text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <p>
+                    <?php the_field('contact_popup_text', 'options'); ?>
+                </p>
+            </div>
+        </div>
+        <button class="close-modal">&times;</button>
+    </div>
+</div>
+
+<div class="modal follow text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <p>
+                    <?php the_field('contact_popup_text', 'options'); ?>
+                </p>
             </div>
         </div>
         <button class="close-modal">&times;</button>
