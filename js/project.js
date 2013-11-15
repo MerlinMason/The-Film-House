@@ -38,6 +38,10 @@
                 mouseenter: function () { filmhouse.menuShouldBeActive(); },
                 mouseleave: function () { filmhouse.menuShouldBeInactive(); }
             });
+            $(".slide-info").on({
+                mouseenter: function (e) { filmhouse.slideInfoShouldBeActive(e); },
+                mouseleave: function (e) { filmhouse.slideInfoShouldBeInactive(e); }
+            });
             $(".slides-pagination a").on("click", function (e) { filmhouse.paginationShouldToggle(e); });
         },
 
@@ -85,6 +89,17 @@
         paginationShouldToggle: function (e) {
             $(".slides-pagination .current").removeClass("current");
             $(e.currentTarget).addClass("current");
+        },
+
+        slideInfoShouldBeActive: function (e) {
+            var info = $(e.currentTarget);
+            var offset = "-" + $(info).height() + "px";
+
+            $(info).css({ "marginTop" : offset });
+        },
+
+        slideInfoShouldBeInactive: function (e) {
+            $(e.currentTarget).attr("style", "");
         }
 
     };

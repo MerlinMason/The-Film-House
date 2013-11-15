@@ -3,6 +3,19 @@
 }
 .slides .slides-container {
     display: none;
+    .container {
+        height:100%;
+        position:relative;
+        overflow:hidden;
+        .slide-info {
+            position:absolute;
+            top:100%;
+            left:0;
+            margin-top:-130px;
+            transition:margin 0.8s ease-in-out;
+            .force-hardware-acceleration();
+        }
+    }
 }
 .slides .scrollable {
     position: relative;
