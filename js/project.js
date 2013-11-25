@@ -33,6 +33,7 @@
                 slide_speed: 600,
                 pagination: false
             });
+            if ($("body").hasClass("home")) { this.createSlideshowPagination(); }
         },
 
         bindUIActions: function () {
@@ -110,7 +111,7 @@
         },
 
         videoShouldPlay: function (e) {
-            var vimeoid = $(e.currentTarget).data("video");
+            var vimeoid = $.trim($(e.currentTarget).data("video"));
             var vw = $(window).width() - 72 + "px";
             var vh = $(window).height() - 90 + "px";
             var size = " width=\"" + vw + "\" height=\"" + vh + "\"";
@@ -118,6 +119,18 @@
 
             $(modal).prepend("<iframe class=\"player-frame\" src=\"//player.vimeo.com/video/" + vimeoid + vimeoquery + size + " frameborder=\"0\"></iframe>");
             $(modal).fadeIn("fast");
+        },
+
+        createSlideshowPagination: function () {
+            var pagination = $(".slides-pagination");
+
+            $(".slides-container li").each(function () {
+                var title = $(this).data("title");
+                var id = $(this).data("id");
+
+                $(pagination).find(".title[data-title=" + id + "]").text(title)
+                    .parent().css({ "display" : "block" });
+            });
         }
     };
 
