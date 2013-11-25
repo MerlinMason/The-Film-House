@@ -56,6 +56,10 @@
     </div>
 </div>
 
+<div class="modal video">
+    <button class="close-modal">&times;</button>
+</div>
+
 <div class="spinner"></div>
 
 <?php

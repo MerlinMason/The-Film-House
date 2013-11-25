@@ -48,6 +48,9 @@
                         <img src="http://flickholdr.com/1000/800" alt="">
                         <div class="container">
                             <article class="slide-info">
+                                <div class="play-icon-container">
+                                    <i class="play-video" data-video="76737456"></i>
+                                </div>
                                 <img src="http://placehold.it/200x100" class="preserve">
                                 <h2>Sub-title</h2>
                                 <div class="row mb-2x">

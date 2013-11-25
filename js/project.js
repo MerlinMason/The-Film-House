@@ -1,6 +1,8 @@
 (function ($) {
     "use strict";
 
+    // OPTIONS
+    // spin.js
     $.fn.spin.presets.standard = {
         lines: 15, // The number of lines to draw
         length: 40, // The length of each line
@@ -19,6 +21,8 @@
         top: "auto", // Top position relative to parent in px
         left: "auto" // Left position relative to parent in px
     };
+    // Vimeo options
+    var vimeoquery = "?title=0&byline=0&portrait=0&color=ffffff&autoplay=1&loop=0\"";
 
     var filmhouse = {
 
@@ -43,6 +47,7 @@
                 mouseleave: function (e) { filmhouse.slideInfoShouldBeInactive(e); }
             });
             $(".slides-pagination a").on("click", function (e) { filmhouse.paginationShouldToggle(e); });
+            $(".play-video").on("click", function (e) { filmhouse.videoShouldPlay(e); });
         },
 
         windowLoaded: function () {
@@ -75,7 +80,9 @@
 
         pageModalShouldClose: function () {
             filmhouse.menuShouldBeInactive();
-            $(".modal:visible").fadeOut("fast");
+            $(".modal:visible").fadeOut("fast", function () {
+                $(this).find("iframe").remove();
+            });
         },
 
         menuShouldBeActive: function () {
@@ -100,8 +107,18 @@
 
         slideInfoShouldBeInactive: function (e) {
             $(e.currentTarget).attr("style", "");
-        }
+        },
 
+        videoShouldPlay: function (e) {
+            var vimeoid = $(e.currentTarget).data("video");
+            var vw = $(window).width() - 72 + "px";
+            var vh = $(window).height() - 108 + "px";
+            var size = " width=\"" + vw + "\" height=\"" + vh + "\"";
+            var modal = $(".modal.video");
+
+            $(modal).prepend("<iframe class=\"player-frame\" src=\"//player.vimeo.com/video/" + vimeoid + vimeoquery + size + " frameborder=\"0\"></iframe>");
+            $(modal).fadeIn("fast");
+        }
     };
 
     // DOM Ready
