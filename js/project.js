@@ -112,7 +112,7 @@
         videoShouldPlay: function (e) {
             var vimeoid = $(e.currentTarget).data("video");
             var vw = $(window).width() - 72 + "px";
-            var vh = $(window).height() - 108 + "px";
+            var vh = $(window).height() - 90 + "px";
             var size = " width=\"" + vw + "\" height=\"" + vh + "\"";
             var modal = $(".modal.video");
 
