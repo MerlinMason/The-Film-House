@@ -158,9 +158,14 @@ textarea:focus {
             transition:all 0.2s 0.2s ease-in-out;
         }
     }
-    @media (max-width:@break-small) { }
-    @media (max-width:@break-medium) { }
-    @media (max-width:@break-large) { }
+    @media (max-width:@break-small) {
+        background:none;
+        .menu { display:none; }
+    }
+    .touch & {
+        background:none;
+        .menu { display:none; }
+    }
 }
 
 
@@ -205,6 +210,15 @@ textarea:focus {
     &.video {
         z-index:10;
         padding:(@space*2);
+        @media (max-width:@break-small) {
+            padding:0;
+        }
+    }
+    &.touch {
+        z-index:10;
+        padding:@space;
+        text-align:center;
+        overflow:scroll;
     }
 }
 

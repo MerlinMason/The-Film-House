@@ -12,7 +12,7 @@
             top:100%;
             left:0;
             margin-top:-130px;
-            transition:margin 0.8s ease-in-out;
+            transition:all 0.8s ease-in-out;
             .force-hardware-acceleration();
         }
         .play-icon-container {
@@ -27,11 +27,56 @@
                 cursor:pointer;
                 .center-block();
                 .square(100px);
+                background-repeat:no-repeat;
+                background-position:center center;
                 .retina-image("img/icon-play.png", "img/icon-play@2x.png", 100px, 100px);
                 opacity:0.4;
                 transition:opacity 0.2s;
                 &:hover { opacity:1; }
             }
+        }
+    }
+    .touch-logo,
+    .close-touch-info,
+    .touch-info {
+        display:none;
+    }
+    .touch & {
+        .close-touch-info { .close-modal(); }
+        .touch-logo { .center-block(); }
+        .logo { display:none; }
+        .play-video { background-size:50px; }
+        .play-icon-container { top:220px; }
+        .touch-info { .center-block(); }
+        .slide-info {
+            bottom:0;
+            margin:0;
+            background:#191919;
+            background:rgba(0,0,0,.9);
+            padding:140px @space 0;
+            z-index:1;
+            overflow:scroll;
+            text-align:center;
+            &.show-touch { top:0px; }
+        }
+    }
+    @media (max-width:@break-small) {
+        .close-touch-info { .close-modal(); }
+        .touch-logo { .center-block(); }
+        .logo { display:none; }
+        .play-video { background-size:50px; }
+        .play-icon-container { top:220px; }
+        .touch-info { .center-block(); }
+        .container .slide-info {
+            bottom:0;
+            margin:0;
+            background:#191919;
+            background:rgba(0,0,0,.9);
+            padding:140px @space 0;
+            z-index:1;
+            overflow:scroll;
+            text-align:center;
+            &.show-touch { top:0px; }
         }
     }
 }
@@ -50,21 +95,35 @@
 }
 
 .slides-navigation {
-    margin: 0 auto;
-    position: absolute;
-    z-index: 3;
-    top: 46%;
-    width: 100%;
+    margin:0 auto;
+    position:absolute;
+    z-index:10;
+    top:@space;
+    left:@space;
+    right:@space;
+    display:none;
+    .touch & { display:block; }
 }
+@media (max-width:@break-small) {
+    .slides-navigation { display:block; }
+}
+
 .slides-navigation a {
-    position: absolute;
-    display: block;
+    position:absolute;
+    display:block;
+    color:#fff;
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+        color:#fff;
+    }
 }
 .slides-navigation .prev {
-    left: 0;
+    left:0;
 }
 .slides-navigation .next {
-    right: 0;
+    right:0;
 }
 
 .slides-pagination {
@@ -88,6 +147,19 @@
             padding-right:(@space/2);
         }
     }
+
+    // for touch and small screens we want to hide pagination
+    // and switch to the touch nav
+    .slide-navigation { display:none; }
+    .touch & {
+        display:none;
+        .slide-navigation { display:block; }
+    }
+    @media (max-width:@break-small) {
+        display:none;
+        .slide-navigation { display:block; }
+    }
+
     a:link,
     a:visited,  {
         border:2px solid #fff;

@@ -37,7 +37,7 @@
         },
 
         bindUIActions: function () {
-            $("a[href*=#]").on("click", function (e) { filmhouse.launchPageModal(e); });
+            $(".menu a[href*=#]").on("click", function (e) { filmhouse.launchPageModal(e); });
             $(".close-modal").on("click", function () { filmhouse.pageModalShouldClose(); });
             $(".slides-pagination").on({
                 mouseenter: function () { filmhouse.menuShouldBeActive(); },
@@ -49,6 +49,9 @@
             });
             $(".slides-pagination a").on("click", function (e) { filmhouse.paginationShouldToggle(e); });
             $(".play-video").on("click", function (e) { filmhouse.videoShouldPlay(e); });
+            $(".sitename a").on("click", function (e) { filmhouse.logoWasActioned(e); });
+            $(".touch-info").on("click", function (e) { filmhouse.touchInfoWasActioned(e); });
+            $(".close-touch-info").on("click", function (e) { filmhouse.closeTouchInfoWasActioned(e); });
         },
 
         windowLoaded: function () {
@@ -105,20 +108,33 @@
         },
 
         slideInfoShouldBeActive: function (e) {
-            var info = $(e.currentTarget);
-            var offset = "-" + $(info).height() + "px";
+            if (!$("html").hasClass("touch") && $(window).width() > 729) {
+                var info = $(e.currentTarget);
+                var offset = "-" + $(info).height() + "px";
 
-            $(info).css({ "marginTop" : offset });
+                $(info).css({ "marginTop" : offset });
+            }
         },
 
         slideInfoShouldBeInactive: function (e) {
-            $(e.currentTarget).attr("style", "");
+            if (!$("html").hasClass("touch") && $(window).width() > 729) {
+                $(e.currentTarget).attr("style", "");
+            }
         },
 
         videoShouldPlay: function (e) {
             var vimeoid = $.trim($(e.currentTarget).data("video"));
-            var vw = $(window).width() - 72 + "px";
-            var vh = $(window).height() - 90 + "px";
+            var vw = 0;
+            var vh = 0;
+
+            if ($(window).width() < 729) {
+                vw = $(window).width() + "px";
+                vh = $(window).height() - 50 + "px";
+            } else {
+                vw = $(window).width() - 72 + "px";
+                vh = $(window).height() - 90 + "px";
+            }
+
             var size = " width=\"" + vw + "\" height=\"" + vh + "\"";
             var modal = $(".modal.video");
 
@@ -136,6 +152,27 @@
                 $(pagination).find(".title[data-title=" + id + "]").text(title)
                     .parent().css({ "display" : "block" });
             });
+        },
+
+        logoWasActioned: function (e) {
+            if ($("html").hasClass("touch") || $(window).width() < 729) {
+                e.preventDefault();
+                $(".modal.touch").fadeIn("fast");
+            }
+        },
+
+        touchInfoWasActioned: function (e) {
+            if ($("html").hasClass("touch") || $(window).width() < 729) {
+                e.preventDefault();
+                $(e.currentTarget).closest(".container").find(".slide-info").addClass("show-touch");
+                $(".slides-navigation").fadeOut("fast");
+            }
+        },
+
+        closeTouchInfoWasActioned: function (e) {
+            e.preventDefault();
+            $(e.currentTarget).closest(".container").find(".slide-info").removeClass("show-touch");
+            $(".slides-navigation").fadeIn("fast");
         }
     };
 
