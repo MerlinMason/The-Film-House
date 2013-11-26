@@ -149,7 +149,9 @@ textarea:focus {
             .retina-image("img/logo.png", "img/logo@2x.png", 139px, 73px);
         }
     }
-    &:hover, &.is-active {
+    &:hover,
+    &.is-active,
+    .error404 & {
         background-position:0 -266px;
         .menu {
             opacity:1;
@@ -177,6 +179,13 @@ textarea:focus {
             &:hover { color:#fff; }
         }
     }
+}
+
+.fourohfour {
+    text-align:center;
+    padding-top:200px;
+    padding-top:40vh;
+    h1 { font-size:60px; }
 }
 
 //----------------------------------------------------------------------------//

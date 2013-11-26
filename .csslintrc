@@ -1,7 +1,7 @@
 {
     "important": false,
     "adjoining-classes": false,
-    "known-properties": true,
+    "known-properties": false,
     "box-sizing": false,
     "box-model": false,
     "overqualified-elements": true,
@@ -25,7 +25,7 @@
     "ids": true,
     "underscore-property-hack": true,
     "rules-count": true,
-    "qualified-headings": true,
+    "qualified-headings": false,
     "selector-max": true,
     "shorthand": true,
     "text-indent": true,
