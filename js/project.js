@@ -61,13 +61,18 @@
             // stop url from changing
             e.preventDefault();
 
-            // hide existing
-            $(".modal:visible").hide();
-
-            // show this modal
+            // work out which modal to show
             var hash = $(e.currentTarget).attr("href").split("#")[1];
             var modal = $(".modal." + hash);
-            $(modal).fadeIn("fast");
+
+            // if there's already a modal active just switch them
+            if ($(".modal").is(":visible")) {
+                $(".modal:visible").hide();
+                $(modal).show();
+            // if not then fade them
+            } else {
+                $(modal).fadeIn("fast");
+            }
 
             // vert-center content to browser window
             var contentHeight = $(modal).find(".container").height();
