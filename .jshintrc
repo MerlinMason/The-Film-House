@@ -15,6 +15,7 @@
         "module": true,
         "require": true,
         "Spinner": true,
-        "Modernizr": true
+        "Modernizr": true,
+        "Echo": true
     }
 }

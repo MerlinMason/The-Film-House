@@ -65,6 +65,7 @@
 		echo '<script src ="' . $theme . '/js/bower/modernizr/modernizr.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/spinjs/spin.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/jquery.animate-enhanced/scripts/src/jquery.animate-enhanced.js"></script>';
+        echo '<script src ="' . $theme . '/js/bower/echojs/dist/echo.js"></script>';
 		echo '<script src ="' . $theme . '/js/plugins/jquery.spin.js"></script>';
 		echo '<script src ="' . $theme . '/js/plugins/superslides.js"></script>';
 		echo '<script src ="' . $theme . '/js/project.js"></script>';

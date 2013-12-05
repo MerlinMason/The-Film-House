@@ -29,10 +29,21 @@
         init: function () {
             this.bindUIActions();
             $(".spinner").spin("standard");
+
+            // Load in secondary images for hover devices and init hover slideshow
+            if (!Modernizr.touch && Modernizr.opacity) {
+                Echo.init();
+                $(".img-swap").fadeTo(0, 0);
+                $(".slides-container li").mousemove(filmhouse.debounce(function (e) {
+                    filmhouse.hoverSlideshow(e);
+                }, 100));
+            }
+
             $(".slides").superslides({
                 slide_speed: 600,
                 pagination: false
             });
+
             if ($("body").hasClass("home")) { this.createSlideshowPagination(); }
         },
 
@@ -58,6 +69,18 @@
             $(".spinner").fadeOut("slow", function () {
                 $(this).spin(false);
             });
+        },
+
+        // utility function to throttle the amount of times a function is called
+        debounce: function (fn, delay) {
+            var timer = null;
+            return function () {
+                var context = this, args = arguments;
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    fn.apply(context, args);
+                }, delay);
+            };
         },
 
         launchPageModal: function (e) {
@@ -108,7 +131,7 @@
         },
 
         slideInfoShouldBeActive: function (e) {
-            if (!$("html").hasClass("touch") && $(window).width() > 729) {
+            if (!Modernizr.touch && $(window).width() > 729) {
                 var info = $(e.currentTarget);
                 var offset = "-" + $(info).height() + "px";
 
@@ -117,7 +140,7 @@
         },
 
         slideInfoShouldBeInactive: function (e) {
-            if (!$("html").hasClass("touch") && $(window).width() > 729) {
+            if (!Modernizr.touch && $(window).width() > 729) {
                 $(e.currentTarget).attr("style", "");
             }
         },
@@ -144,25 +167,24 @@
 
         createSlideshowPagination: function () {
             var pagination = $(".slides-pagination");
+            var i = 0;
 
             $(".slides-container li").each(function () {
                 var title = $(this).data("title");
-                var id = $(this).data("id");
-
-                $(pagination).find(".title[data-title=" + id + "]").text(title)
-                    .parent().css({ "display" : "block" });
+                $(pagination).find(".title[data-title=" + i + "]").text(title).parent().css({ "display" : "block" });
+                i++;
             });
         },
 
         logoWasActioned: function (e) {
-            if ($("html").hasClass("touch") || $(window).width() < 729) {
+            if (Modernizr.touch || $(window).width() < 729) {
                 e.preventDefault();
                 $(".modal.touch").fadeIn("fast");
             }
         },
 
         touchInfoWasActioned: function (e) {
-            if ($("html").hasClass("touch") || $(window).width() < 729) {
+            if (Modernizr.touch || $(window).width() < 729) {
                 e.preventDefault();
                 $(e.currentTarget).closest(".container").find(".slide-info").addClass("show-touch");
                 $(".slides-navigation").fadeOut("fast");
@@ -173,6 +195,29 @@
             e.preventDefault();
             $(e.currentTarget).closest(".container").find(".slide-info").removeClass("show-touch");
             $(".slides-navigation").fadeIn("fast");
+        },
+
+        hoverSlideshow: function (e) {
+            var vw = $(window).width();
+            var slide = $(".slides-container li:visible");
+            var speed = 800;
+
+            $(".slides").superslides("update");
+
+            // left
+            if (e.pageX <= vw / 3) {
+                $(slide).find(".img-swap.left").fadeTo(speed, 1, function () {
+                    $(slide).find(".img-swap.right").fadeTo(speed, 0);
+                });
+            // right
+            } else if (e.pageX >= (vw / 3) * 2) {
+                $(slide).find(".img-swap.right").fadeTo(speed, 1, function () {
+                    $(slide).find(".img-swap.left").fadeTo(speed, 0);
+                });
+            // middle
+            } else {
+                $(slide).find(".img-swap").fadeTo(speed, 0);
+            }
         }
     };
 

@@ -69,9 +69,17 @@
         </nav>
 
         <ul class="slides-container">
-    		<?php while ( have_posts() ) : the_post(); ?>
-                <li data-title="<?php the_title(); ?>" data-id="<?php echo $wp_query->current_post; ?>">
+
+            <?php
+                $args = array( 'numberposts' => 10, 'category' => '4' );
+                $lastposts = get_posts( $args );
+                foreach($lastposts as $post) : setup_postdata($post);
+            ?>
+
+                <li data-title="<?php the_title(); ?>">
                     <img src="<?php the_field('bg_main'); ?>" alt="<?php the_title(); ?>">
+                    <img class="img-swap left" src="<?php bloginfo('template_url'); ?>/img/blank.gif" alt="<?php the_title(); ?>" data-echo="<?php the_field('bg_left'); ?>">
+                    <img class="img-swap right" src="<?php bloginfo('template_url'); ?>/img/blank.gif" alt="<?php the_title(); ?>" data-echo="<?php the_field('bg_right'); ?>">
                     <div class="container">
                         <div class="play-icon-container">
                             <img src="<?php the_field('logo'); ?>" class="preserve touch-logo">
@@ -99,7 +107,10 @@
                         </article>
                     </div>
                 </li>
-    		<?php endwhile; ?>
+
+            <?php endforeach; ?>
+            <?php wp_reset_query(); ?>
+
         </ul>
     </div>
 
