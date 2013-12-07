@@ -96,6 +96,38 @@ textarea:focus {
     outline:none;
 }
 
+input[type="submit"],
+button,
+.btn {
+    display:inline-block;
+    margin:0 (@space/2) (@space/2) 0;
+    padding:(@space/2);
+    appearance:none;
+    background:transparent;
+    border:1px solid @black-20;
+    color:@black-20;
+    transition: all 0.2s;
+    &.selected,
+    &:hover,
+    &:focus {
+        background:#fff;
+        color:#333;
+        outline:none;
+    }
+}
+
+.play-video {
+    cursor:pointer;
+    .center-block();
+    .square(100px);
+    background-repeat:no-repeat;
+    background-position:center center;
+    .retina-image("img/icon-play.png", "img/icon-play@2x.png", 100px, 100px);
+    opacity:0.4;
+    transition:opacity 0.2s;
+    &:hover { opacity:1; }
+}
+
 
 //----------------------------------------------------------------------------//
 //  Header
@@ -193,6 +225,32 @@ textarea:focus {
     h1 { font-size:60px; }
 }
 
+.library {
+    padding-top:164px;
+    .isotope-content { margin:0 -@space; }
+    .post {
+        width:50%;
+        padding:@space;
+        position:relative;
+    }
+}
+
+
+//----------------------------------------------------------------------------//
+//  Required styles for Isotope
+//----------------------------------------------------------------------------//
+
+
+.isotope-item { z-index: 2; }
+.isotope-hidden.isotope-item {
+    pointer-events: none;
+    z-index: 1;
+}
+.isotope,
+.isotope .isotope-item { transition-duration: 0.8s; }
+.isotope { transition-property: height, width; }
+.isotope .isotope-item { transition-property: transform, opacity; }
+
 //----------------------------------------------------------------------------//
 //  Modals
 //----------------------------------------------------------------------------//
@@ -233,7 +291,10 @@ textarea:focus {
     font-size:@font-size-large;
     cursor:pointer;
     &:focus { outline:none; }
-    &:hover { color:#fff; }
+    &:hover {
+        color:#fff;
+        background:none;
+    }
 }
 
 .spinner {

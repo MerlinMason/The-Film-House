@@ -30,21 +30,15 @@
             this.bindUIActions();
             $(".spinner").spin("standard");
 
-            // Load in secondary images for hover devices and init hover slideshow
-            if (!Modernizr.touch && Modernizr.opacity) {
-                Echo.init();
-                $(".img-swap").fadeTo(0, 0);
-                $(".slides-container li").mousemove(filmhouse.debounce(function (e) {
-                    filmhouse.hoverSlideshow(e);
-                }, 100));
-            }
+            // init slideshow for homepage
+            if ($("body").hasClass("home")) { this.initSlideshow(); }
 
-            $(".slides").superslides({
-                slide_speed: 600,
-                pagination: false
+            // init isotope
+            $(".isotope-content").isotope({
+                filter: ".post",
+                resizable: false,
+                masonry: { columnWidth: $(".isotope-content").width() / 2 }
             });
-
-            if ($("body").hasClass("home")) { this.createSlideshowPagination(); }
         },
 
         bindUIActions: function () {
@@ -63,12 +57,21 @@
             $(".sitename a").on("click", function (e) { filmhouse.logoWasActioned(e); });
             $(".touch-info").on("click", function (e) { filmhouse.touchInfoWasActioned(e); });
             $(".close-touch-info").on("click", function (e) { filmhouse.closeTouchInfoWasActioned(e); });
+            $(".isotope-filters button").on("click", function (e) { filmhouse.filterIsotope(e); });
         },
 
         windowLoaded: function () {
             $(".spinner").fadeOut("slow", function () {
                 $(this).spin(false);
             });
+        },
+
+        windowResized: function () {
+            if ($(window).width() > 729) {
+                $(".isotope-content").isotope({ masonry: { columnWidth: $(".isotope-content").width() / 2 } });
+            } else {
+                $(".isotope-content").isotope({ masonry: { columnWidth: $(".isotope-content").width() / 1 } });
+            }
         },
 
         // utility function to throttle the amount of times a function is called
@@ -165,7 +168,15 @@
             $(modal).fadeIn("fast");
         },
 
-        createSlideshowPagination: function () {
+        initSlideshow: function () {
+
+            // init slideshow
+            $(".slides").superslides({
+                slide_speed: 600,
+                pagination: false
+            });
+
+            // build menu
             var pagination = $(".slides-pagination");
             var i = 0;
 
@@ -174,6 +185,15 @@
                 $(pagination).find(".title[data-title=" + i + "]").text(title).parent().css({ "display" : "block" });
                 i++;
             });
+
+            // Load in secondary images for hover devices and init hover image toggle
+            if (!Modernizr.touch && Modernizr.opacity) {
+                Echo.init();
+                $(".img-swap").fadeTo(0, 0);
+                $(".slides-container li").mousemove(filmhouse.debounce(function (e) {
+                    filmhouse.hoverSlideshow(e);
+                }, 100));
+            }
         },
 
         logoWasActioned: function (e) {
@@ -218,6 +238,16 @@
             } else {
                 $(slide).find(".img-swap").fadeTo(speed, 0);
             }
+        },
+
+        filterIsotope: function (e) {
+            // add class for selected filter buttons
+            $(".isotope-filters .selected").removeClass("selected");
+            $(e.currentTarget).addClass("selected");
+
+            // filter items
+            var selector = $(e.currentTarget).data("filter");
+            $(".isotope-content").isotope({ filter: selector });
         }
     };
 
@@ -225,5 +255,7 @@
     $(function () { filmhouse.init(); });
     // Images Loaded
     $(window).load(function () { filmhouse.windowLoaded(); });
+    // Window Resized
+    $(window).smartresize(function () { filmhouse.windowResized(); });
 
 } (jQuery));
