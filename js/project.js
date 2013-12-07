@@ -21,13 +21,10 @@
         top: "auto", // Top position relative to parent in px
         left: "auto" // Left position relative to parent in px
     };
-    // Vimeo options
-    var vimeoquery = "?title=0&byline=0&portrait=0&color=ffffff&autoplay=1&loop=0\"";
 
     var filmhouse = {
 
         init: function () {
-            this.bindUIActions();
             $(".spinner").spin("standard");
 
             // init slideshow for homepage
@@ -39,6 +36,8 @@
                 resizable: false,
                 masonry: { columnWidth: $(".isotope-content").width() / 2 }
             });
+
+            this.bindUIActions();
         },
 
         bindUIActions: function () {
@@ -149,6 +148,9 @@
         },
 
         videoShouldPlay: function (e) {
+            // Vimeo options
+            var vimeoquery = "?title=0&byline=0&portrait=0&color=ffffff&autoplay=1&loop=0\"";
+
             var vimeoid = $.trim($(e.currentTarget).data("video"));
             var vw = 0;
             var vh = 0;

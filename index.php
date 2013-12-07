@@ -87,7 +87,9 @@
                             <a href="#" class="touch-info">Info</a>
                         </div>
                         <article class="slide-info">
-                            <img src="<?php the_field('logo'); ?>" class="preserve logo">
+                            <div class="logo-container">
+                                <img src="<?php the_field('logo'); ?>" class="preserve logo">
+                            </div>
                             <h2 class="mb-1x"><?php the_field('desc_short'); ?></h2>
                             <div class="row mb-2x">
                                 <div class="col-sm-3">
