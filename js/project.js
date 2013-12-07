@@ -66,10 +66,12 @@
         },
 
         windowResized: function () {
-            if ($(window).width() > 729) {
+            if ($(window).width() > 590) {
                 $(".isotope-content").isotope({ masonry: { columnWidth: $(".isotope-content").width() / 2 } });
+                console.log("two cols");
             } else {
-                $(".isotope-content").isotope({ masonry: { columnWidth: $(".isotope-content").width() / 1 } });
+                $(".isotope-content").isotope({ masonry: { columnWidth: $(".isotope-content").width() } });
+                console.log("one col");
             }
         },
 

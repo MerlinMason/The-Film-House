@@ -20,7 +20,7 @@
             ?>
 
                 <article <?php post_class(); ?>>
-                    <img src="<?php the_field('thumb'); ?>" alt="<?php the_title(); ?>">
+                    <div class="img" style="background-image:url(<?php the_field('thumb'); ?>);"></div>
                     <i class="play-video" data-video="<?php the_field('vimeo_id'); ?>"></i>
                     <h2><?php the_title(); ?> - <?php the_field('desc_short'); ?></h2>
                 </article>
