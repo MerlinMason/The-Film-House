@@ -2,7 +2,7 @@
 
 <div class="library">
     <div class="container">
-        <nav class="isotope-filters">
+        <nav class="isotope-filters text-center">
             <button data-filter="*" class="selected btn">Show All</button>
             <?php
                 $categories=get_categories('child_of=5&orderby=slug');

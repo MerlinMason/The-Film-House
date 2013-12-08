@@ -38,6 +38,9 @@
 </div>
 
 <div class="modal touch">
+    <nav class="touch-menu">
+        <?php wp_nav_menu( array('container_class' => 'menu-header', 'theme_location' => 'touch-menu')); ?>
+    </nav>
     <h3>About</h3>
     <p><?php the_field('about_popup_text', 'options'); ?></p>
     <h3>Contact</h3>
@@ -50,7 +53,7 @@
 <div class="spinner"></div>
 
 <?php
-	$production = true;
+	$production = false;
 	$theme = get_template_directory_uri();
 
 	// if we're in production mode, include minified concatenated script

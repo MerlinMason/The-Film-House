@@ -40,7 +40,7 @@
             .center-block();
             max-width:90%;
         }
-        .logo { display:none; }
+        .logo-container { display:none; }
         .play-video { background-size:50px; }
         .play-icon-container { top:220px; }
         .touch-info { .center-block(); }
@@ -49,9 +49,10 @@
             margin:0;
             background:#191919;
             background:rgba(0,0,0,.9);
-            padding:140px @space 0;
+            padding:@space;
             z-index:1;
-            overflow:scroll;
+            overflow-y:scroll;
+            -webkit-overflow-scrolling:touch;
             text-align:center;
             &.show-touch { top:0px; }
         }
@@ -62,7 +63,7 @@
             .center-block();
             max-width:90%;
         }
-        .logo { display:none; }
+        .logo-container { display:none; }
         .play-video { background-size:50px; }
         .play-icon-container { top:220px; }
         .touch-info { .center-block(); }
@@ -71,9 +72,10 @@
             margin:0;
             background:#191919;
             background:rgba(0,0,0,.9);
-            padding:140px @space 0;
+            padding:@space;
             z-index:1;
-            overflow:scroll;
+            overflow-y:scroll;
+            -webkit-overflow-scrolling:touch;
             text-align:center;
             &.show-touch { top:0px; }
         }

@@ -198,6 +198,15 @@ button,
         background:none;
         .menu { display:none; }
     }
+    .page & { position:static; }
+}
+
+.touch-menu {
+    li {
+        list-style:none;
+        display:inline-block;
+        margin:@space (@space/2);
+    }
 }
 
 
@@ -226,7 +235,7 @@ button,
 }
 
 .library {
-    padding-top:164px;
+    margin-bottom:(@space*2);
     .isotope-content { margin:0 -@space; }
     .post {
         padding:@space;
@@ -303,7 +312,8 @@ button,
         z-index:10;
         padding:@space;
         text-align:center;
-        overflow:scroll;
+        overflow-y:scroll;
+        -webkit-overflow-scrolling:touch;
     }
 }
 

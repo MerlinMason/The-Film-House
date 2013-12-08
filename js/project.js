@@ -68,10 +68,8 @@
         windowResized: function () {
             if ($(window).width() > 590) {
                 $(".isotope-content").isotope({ masonry: { columnWidth: $(".isotope-content").width() / 2 } });
-                console.log("two cols");
             } else {
                 $(".isotope-content").isotope({ masonry: { columnWidth: $(".isotope-content").width() } });
-                console.log("one col");
             }
         },
 
@@ -104,6 +102,9 @@
                 $(modal).fadeIn("fast");
             }
 
+            // stop the rest of the page being scrollable
+            $("body").css({ "overflow" : "hidden" });
+
             // vert-center content to browser window
             var contentHeight = $(modal).find(".container").height();
             var windowHeight = $(window).height();
@@ -116,8 +117,13 @@
 
         pageModalShouldClose: function () {
             filmhouse.menuShouldBeInactive();
-            $(".modal:visible").fadeOut("fast", function () {
-                $(this).find("iframe").remove();
+            $(".modal.touch").animate({
+                scrollTop: 0
+            }, 400, function () {
+                $(".modal:visible").fadeOut("fast", function () {
+                    $(this).find("iframe").remove();
+                    $("body").css({ "overflow" : "auto" });
+                });
             });
         },
 
@@ -204,6 +210,8 @@
             if (Modernizr.touch || $(window).width() < 729) {
                 e.preventDefault();
                 $(".modal.touch").fadeIn("fast");
+                // stop the rest of the page being scrollable
+                $("body").css({ "overflow" : "hidden" });
             }
         },
 
@@ -211,14 +219,18 @@
             if (Modernizr.touch || $(window).width() < 729) {
                 e.preventDefault();
                 $(e.currentTarget).closest(".container").find(".slide-info").addClass("show-touch");
-                $(".slides-navigation").fadeOut("fast");
+                $(".slides-navigation, .page-header").fadeOut("fast");
             }
         },
 
         closeTouchInfoWasActioned: function (e) {
             e.preventDefault();
-            $(e.currentTarget).closest(".container").find(".slide-info").removeClass("show-touch");
-            $(".slides-navigation").fadeIn("fast");
+            $(e.currentTarget).closest(".container").find(".slide-info").animate({
+                scrollTop: 0
+            }, 400, function () {
+                $(this).removeClass("show-touch");
+                $(".slides-navigation, .page-header").fadeIn("fast");
+            });
         },
 
         hoverSlideshow: function (e) {

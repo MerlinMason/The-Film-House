@@ -14,7 +14,7 @@
     // Add custom menus
     register_nav_menus( array(
         'primary' => __( 'Primary Navigation', 'wpfme' ),
-        //'example' => __( 'Example Navigation', 'wpfme' ),
+        'touch-menu' => __( 'Mobile Navigation', 'wpfme' ),
     ) );
 
 
