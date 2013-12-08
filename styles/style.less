@@ -19,7 +19,7 @@
 @import "grid.less";
 // Third Party
 @import "superslides.less";
-@import "font-awesome.less";
+@import "entypo.less";
 
 ::-moz-selection {
     background:@color-highlight;
@@ -221,8 +221,19 @@ button,
         margin:0 (@space/2) @space;
         a {
             color:@black-30;
+            background:transparent;
             transition:all 0.2s;
-            &:hover { color:#fff; }
+            font-size:20px;
+            display:inline-block;
+            .square(45px);
+            line-height:45px;
+            border:1px solid @black-30;
+            border-radius:4px;
+            &:hover {
+                color:#000;
+                background:#fff;
+                border-color:#fff;
+            }
         }
     }
 }

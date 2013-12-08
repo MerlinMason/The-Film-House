@@ -61,10 +61,10 @@
         </nav>
         <nav class="slides-navigation">
             <a href="#" class="next">
-                <i class="fa fa-3x fa-long-arrow-right"></i>
+                <i class="icon-right-open-big"></i>
             </a>
             <a href="#" class="prev">
-                <i class="fa fa-3x fa-long-arrow-left"></i>
+                <i class="icon-left-open-big"></i>
             </a>
         </nav>
 

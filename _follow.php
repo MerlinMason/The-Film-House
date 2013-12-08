@@ -5,19 +5,19 @@
     <li>
         <a href="<?php the_field('facebook_link', 'options'); ?>" target="_blank">
             <span class="text-hidden">Facebook</span>
-            <i class="fa fa-3x fa-facebook-square"></i>
+            <i class="icon-facebook-1"></i>
         </a>
     </li>
     <li>
         <a href="<?php the_field('twitter_link', 'options'); ?>" target="_blank">
             <span class="text-hidden">Twitter</span>
-            <i class="fa fa-3x fa-twitter-square"></i>
+            <i class="icon-twitter-1"></i>
         </a>
     </li>
     <li>
         <a href="<?php the_field('vimeo_link', 'options'); ?>" target="_blank">
             <span class="text-hidden">Vimeo</span>
-            <i class="fa fa-3x fa-vimeo-square"></i>
+            <i class="icon-vimeo"></i>
         </a>
     </li>
 </ul>
