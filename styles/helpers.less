@@ -30,6 +30,10 @@
     }
 }
 
+html .hidden { display:none; }
+.touch .hide-touch { display:none!important; }
+.touch .show-touch { display:block!important; }
+
 // Typography
 .caps { text-transform:uppercase; }
 .capitalize,
@@ -45,6 +49,7 @@
 .table .text-center
 .text-centre,
 .text-center { text-align:center; }
+.text-justify { text-align:justify; }
 
 // cut down really long text strings so they don't wrap onto two lin...
 // can be used as a class
@@ -95,6 +100,13 @@
 }
 .square(@size) {
     .size(@size, @size);
+}
+.position(@position, @top:0, @right:0, @bottom:0, @left:0) {
+    position:@position;
+    top:@top;
+    right:@right;
+    bottom:@bottom;
+    left:@left;
 }
 
 // Spacer units for over-ruling modular spacing

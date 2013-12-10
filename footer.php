@@ -18,7 +18,6 @@
                 </p>
             </div>
         </div>
-        <button class="close-modal">&times;</button>
     </div>
 </div>
 
@@ -29,31 +28,37 @@
                 <?php include('_follow.php'); ?>
             </div>
         </div>
-        <button class="close-modal">&times;</button>
     </div>
 </div>
 
-<div class="modal video">
-    <button class="close-modal">&times;</button>
-</div>
+<div class="modal video"></div>
 
 <div class="modal touch">
-    <nav class="touch-menu">
+    <nav class="touch-menu caps">
         <?php wp_nav_menu( array('container_class' => 'menu-header', 'theme_location' => 'touch-menu')); ?>
     </nav>
-    <h3>About</h3>
-    <p><?php the_field('about_popup_text', 'options'); ?></p>
-    <h3>Contact</h3>
-    <p><?php the_field('contact_popup_text', 'options'); ?></p>
-    <h3>Follow</h3>
+
+    <h3 class="caps">About</h3>
+    <div class="text-justify">
+        <?php the_field('about_popup_text', 'options'); ?>
+    </div>
+
+    <h3 class="caps">Contact</h3>
+    <?php the_field('contact_popup_text', 'options'); ?>
+
+    <h3 class="caps">Follow</h3>
     <?php include('_follow.php'); ?>
-    <button class="close-modal">&times;</button>
 </div>
+
+<button class="close-modal hidden">
+    <span class="show-touch hidden">&times;</span>
+    <span class="hide-touch">Close</span>
+</button>
 
 <div class="spinner"></div>
 
 <?php
-	$production = false;
+	$production = true;
 	$theme = get_template_directory_uri();
 
 	// if we're in production mode, include minified concatenated script
@@ -69,6 +74,7 @@
         echo '<script src ="' . $theme . '/js/bower/spinjs/spin.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/jquery.animate-enhanced/scripts/src/jquery.animate-enhanced.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/echojs/dist/echo.js"></script>';
+        echo '<script src ="' . $theme . '/js/bower/fitvids/jquery.fitvids.js"></script>';
 		echo '<script src ="' . $theme . '/js/plugins/jquery.spin.js"></script>';
 		echo '<script src ="' . $theme . '/js/plugins/superslides.js"></script>';
         echo '<script src ="' . $theme . '/js/plugins/isotope.js"></script>';

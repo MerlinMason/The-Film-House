@@ -4,29 +4,34 @@
 .slides .slides-container {
     display: none;
     .container {
-        height:100%;
+        .size(100%, 100%);
+        margin:0;
         position:relative;
         overflow:hidden;
         .slide-info {
-            position:absolute;
-            top:100%;
-            left:0;
-            margin-top:-130px;
+            .position(absolute, 100%, 0, auto, 0);
+            z-index:2;
+            margin-top:-207px; // logo&margin + heading&margin
+            padding:0 (@space*2);
             transition:all 0.8s ease-in-out;
+            background:linear-gradient(to top, rgba(0,0,0,.6) 70%, rgba(0,0,0,0)) 100%;
             .force-hardware-acceleration();
+            p { text-align:justify; }
         }
         .play-icon-container {
             text-align:center;
             position:absolute;
             z-index:1;
-            top:50%;
+            bottom:250px;
             left:0;
             right:0;
-            margin-top:-50px;
         }
         .logo-container {
-            height:100px;
-            .logo { max-width:100%; }
+            height:150px;
+            .logo {
+                max-width:100%;
+                max-height:100%;
+            }
         }
     }
     .touch-logo,
@@ -38,12 +43,20 @@
         .close-touch-info { .close-modal(); }
         .touch-logo {
             .center-block();
-            max-width:90%;
+            height:75px;
+            width:auto;
         }
         .logo-container { display:none; }
-        .play-video { background-size:50px; }
-        .play-icon-container { top:220px; }
-        .touch-info { .center-block(); }
+        .play-video, .play-video:after { background-size:50px; }
+        .play-icon-container {
+            top:170px;
+            bottom:auto;
+        }
+        .touch-info {
+            display:block;
+            .position(fixed, auto, 0, (@space*1.5), 0);
+            text-align:center;
+        }
         .slide-info {
             bottom:0;
             margin:0;
@@ -61,12 +74,20 @@
         .close-touch-info { .close-modal(); }
         .touch-logo {
             .center-block();
-            max-width:90%;
+            height:75px;
+            width:auto;
         }
         .logo-container { display:none; }
-        .play-video { background-size:50px; }
-        .play-icon-container { top:220px; }
-        .touch-info { .center-block(); }
+        .play-video, .play-video:after { background-size:50px; }
+        .play-icon-container {
+            top:170px;
+            bottom:auto;
+        }
+        .touch-info {
+            display:block;
+            .position(fixed, auto, 0, (@space*1.5), 0);
+            text-align:center;
+        }
         .container .slide-info {
             bottom:0;
             margin:0;
@@ -104,6 +125,12 @@
     right:@space;
     display:none;
     .touch & { display:block; }
+    a {
+        .size(30px, 12px);
+        display:block;
+        &.next { .retina-image("img/icon-arrow-right.png", "img/icon-arrow-right@2x.png", 30px, 12px); }
+        &.prev { .retina-image("img/icon-arrow-left.png", "img/icon-arrow-left@2x.png", 30px, 12px); }
+    }
 }
 @media (max-width:@break-small) {
     .slides-navigation { display:block; }
@@ -129,13 +156,14 @@
 
 .slides-pagination {
     position:absolute;
-    z-index:6;
-    top:@space;
-    left:(@space*2);
+    z-index:3;
+    top:(@space*1.5);
+    left:(@space*4);
     right:60%;
+    &.primary { text-align:right; }
     &.secondary {
         left:60%;
-        right:(@space*2);
+        right:(@space*4);
         .title {
             left:auto;
             right:-2px;
@@ -160,16 +188,24 @@
         display:none;
         .slide-navigation { display:block; }
     }
-
+    a,
     a:link,
     a:visited,  {
         border:2px solid #fff;
-        height:40px;
         display:none;
+        max-width:60px;
         color:transparent;
         opacity:0.4;
-        transition:all 0.2s;
+        .caps();
+        //transition:all 0.2s; // currently causing a weird rendering bug in blink
         position:relative;
+        width:16%;
+        margin:0 2%;
+        &:before {
+            content:"";
+            display:block;
+            padding-top:56.25%; // creates 16:9 aspect ratio
+        }
     }
     a:hover {
         opacity:0.7;
@@ -178,8 +214,10 @@
     .current { opacity:1!important; }
     .title {
         position:absolute;
-        top:0;
-        left:-2px;
-        padding-top:45px;
+        top:120%;
+        left:-100%;
+        width:300%;
+        display:block;
+        text-align:center;
     }
 }

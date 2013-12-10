@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_url'); ?>"/>
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>"/>
-    <link rel="icon" type="image/png" href="<?php bloginfo('template_url'); ?>/img/favicon.ico">
+    <link rel="icon" type="image/png" href="<?php bloginfo('template_url'); ?>/img/favicon.png">
 
     <?php wp_head(); ?>
 
@@ -27,16 +27,15 @@
 
 <body <?php body_class(); ?>>
 
+<div class="header-grad"></div>
 <header class="page-header">
-    <div class="container">
-        <h1 class="sitename">
-            <a href="<?php echo home_url('/'); ?>">
-                <?php bloginfo('name'); ?>
-            </a>
-        </h1>
+    <h1 class="sitename">
+        <a href="<?php echo home_url('/'); ?>">
+            <?php bloginfo('name'); ?>
+        </a>
+    </h1>
 
-        <nav class="menu">
-            <?php wp_nav_menu( array('container_class' => 'menu-header', 'theme_location' => 'primary')); ?>
-        </nav>
-    </div>
+    <nav class="menu">
+        <?php wp_nav_menu( array('container_class' => 'menu-header', 'theme_location' => 'primary')); ?>
+    </nav>
 </header>

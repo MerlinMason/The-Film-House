@@ -24,6 +24,8 @@
 
     var filmhouse = {
 
+        touchInfoIsVisible: false,
+
         init: function () {
             $(".spinner").spin("standard");
 
@@ -43,7 +45,7 @@
         bindUIActions: function () {
             $(".menu a[href*=#]").on("click", function (e) { filmhouse.launchPageModal(e); });
             $(".close-modal").on("click", function () { filmhouse.pageModalShouldClose(); });
-            $(".slides-pagination").on({
+            $(".page-header").on({
                 mouseenter: function () { filmhouse.menuShouldBeActive(); },
                 mouseleave: function () { filmhouse.menuShouldBeInactive(); }
             });
@@ -55,7 +57,6 @@
             $(".play-video").on("click", function (e) { filmhouse.videoShouldPlay(e); });
             $(".sitename a").on("click", function (e) { filmhouse.logoWasActioned(e); });
             $(".touch-info").on("click", function (e) { filmhouse.touchInfoWasActioned(e); });
-            $(".close-touch-info").on("click", function (e) { filmhouse.closeTouchInfoWasActioned(e); });
             $(".isotope-filters button").on("click", function (e) { filmhouse.filterIsotope(e); });
         },
 
@@ -89,6 +90,10 @@
             // stop url from changing
             e.preventDefault();
 
+            // highlight current page
+            $(".menu-header .current-menu-item").removeClass("current-menu-item");
+            $(e.currentTarget).parent().addClass("current-menu-item");
+
             // work out which modal to show
             var hash = $(e.currentTarget).attr("href").split("#")[1];
             var modal = $(".modal." + hash);
@@ -101,6 +106,8 @@
             } else {
                 $(modal).fadeIn("fast");
             }
+
+            $(".close-modal").fadeIn("fast");
 
             // stop the rest of the page being scrollable
             $("body").css({ "overflow" : "hidden" });
@@ -116,23 +123,43 @@
         },
 
         pageModalShouldClose: function () {
-            filmhouse.menuShouldBeInactive();
-            $(".modal.touch").animate({
-                scrollTop: 0
-            }, 400, function () {
-                $(".modal:visible").fadeOut("fast", function () {
-                    $(this).find("iframe").remove();
-                    $("body").css({ "overflow" : "auto" });
+
+            if (filmhouse.touchInfoIsVisible) {
+                filmhouse.closeTouchInfoWasActioned();
+            } else {
+                filmhouse.menuShouldBeInactive();
+
+                // scroll the div to the top then fade out and reset
+                $(".modal.touch").animate({
+                    scrollTop: 0
+                }, 400, function () {
+                    $(".modal:visible").fadeOut("fast", function () {
+                        $(this).find("iframe").remove();
+                        $("body").css({ "overflow" : "auto" });
+                        $(".close-modal").fadeOut("fast");
+                    });
                 });
-            });
+
+                // Reset menu
+                $(".menu-header .current-menu-item").removeClass("current-menu-item");
+                // If it's the library we need to reset the current item to libary
+                if ($("body").hasClass("page-template-default")) {
+                    $(".menu-header li:last-child").addClass("current-menu-item");
+                }
+
+            }
         },
 
         menuShouldBeActive: function () {
-            $(".page-header").addClass("is-active");
+            if (!Modernizr.touch && $(window).width() > 728) {
+                $(".page-header").addClass("is-active");
+                $(".header-grad").fadeIn("fast");
+            }
         },
 
         menuShouldBeInactive: function () {
             $(".page-header").removeClass("is-active");
+            $(".header-grad").fadeOut("fast");
         },
 
         paginationShouldToggle: function (e) {
@@ -158,24 +185,14 @@
         videoShouldPlay: function (e) {
             // Vimeo options
             var vimeoquery = "?title=0&byline=0&portrait=0&color=ffffff&autoplay=1&loop=0\"";
-
             var vimeoid = $.trim($(e.currentTarget).data("video"));
-            var vw = 0;
-            var vh = 0;
-
-            if ($(window).width() < 729) {
-                vw = $(window).width() + "px";
-                vh = $(window).height() - 50 + "px";
-            } else {
-                vw = $(window).width() - 72 + "px";
-                vh = $(window).height() - 90 + "px";
-            }
-
-            var size = " width=\"" + vw + "\" height=\"" + vh + "\"";
             var modal = $(".modal.video");
 
-            $(modal).prepend("<iframe class=\"player-frame\" src=\"//player.vimeo.com/video/" + vimeoid + vimeoquery + size + " frameborder=\"0\"></iframe>");
-            $(modal).fadeIn("fast");
+            $(modal).prepend("<iframe class=\"player-frame\" src=\"//player.vimeo.com/video/" + vimeoid + vimeoquery + " frameborder=\"0\"></iframe>");
+            $(modal).fadeIn("fast", function () {
+                $(modal).fitVids();
+            });
+            $(".close-modal").fadeIn("fast");
         },
 
         initSlideshow: function () {
@@ -192,12 +209,12 @@
 
             $(".slides-container li").each(function () {
                 var title = $(this).data("title");
-                $(pagination).find(".title[data-title=" + i + "]").text(title).parent().css({ "display" : "block" });
+                $(pagination).find(".title[data-title=" + i + "]").text(title).parent().css({ "display" : "inline-block" });
                 i++;
             });
 
             // Load in secondary images for hover devices and init hover image toggle
-            if (!Modernizr.touch && Modernizr.opacity) {
+            if (!Modernizr.touch && $(window).width() > 728) {
                 Echo.init();
                 $(".img-swap").fadeTo(0, 0);
                 $(".slides-container li").mousemove(filmhouse.debounce(function (e) {
@@ -210,6 +227,7 @@
             if (Modernizr.touch || $(window).width() < 729) {
                 e.preventDefault();
                 $(".modal.touch").fadeIn("fast");
+                $(".close-modal").fadeIn("fast");
                 // stop the rest of the page being scrollable
                 $("body").css({ "overflow" : "hidden" });
             }
@@ -220,16 +238,20 @@
                 e.preventDefault();
                 $(e.currentTarget).closest(".container").find(".slide-info").addClass("show-touch");
                 $(".slides-navigation, .page-header").fadeOut("fast");
+                $(".close-modal").fadeIn("fast");
+                filmhouse.touchInfoIsVisible = true;
             }
         },
 
-        closeTouchInfoWasActioned: function (e) {
-            e.preventDefault();
-            $(e.currentTarget).closest(".container").find(".slide-info").animate({
+        closeTouchInfoWasActioned: function () {
+            $(".slide-info.show-touch").animate({
                 scrollTop: 0
             }, 400, function () {
+                filmhouse.touchInfoIsVisible = false;
                 $(this).removeClass("show-touch");
-                $(".slides-navigation, .page-header").fadeIn("fast");
+                $(".slides-navigation, .page-header").fadeIn("fast", function () {
+                    $(".close-modal").fadeOut("fast");
+                });
             });
         },
 
