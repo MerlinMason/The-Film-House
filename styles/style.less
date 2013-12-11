@@ -387,27 +387,19 @@ button,
 }
 
 .library {
-    margin:170px 0 (@space*2);
+    margin:170px 0 100px;
     @media (max-width:@break-small) {
-        margin-top:100px;
+        margin-top:100px; // smaller logo here
     }
-    .isotope-content { margin:0 -@space; }
     .post {
         padding:@space;
         position:relative;
-        width:50%;
-        @media (max-width:@break-small) {
-            width:100%; // force one col for small screens
-        }
-        .img {
-            background-position:center center;
-            background-size:cover;
+        .post-contents { position:relative; }
+        img {
+            display:block;
+            width:100%;
+            height:auto;
             margin-bottom:(@space/2);
-            &:before {
-                content:"";
-                display:block;
-                padding-top:56.25%; // creates 16:9 aspect ratio
-            }
         }
         .play-video {
             text-align:center;
@@ -416,37 +408,22 @@ button,
             top:50%;
             left:0;
             right:0;
-            margin-top:-50px;
+            margin-top:-35px;
         }
+        &.showreel { padding:0 0 @space 0; }
+    }
+    .back-home {
+        .close-modal();
     }
 }
 
-
-//----------------------------------------------------------------------------//
-//  Required styles for Isotope
-//----------------------------------------------------------------------------//
-
-
-.isotope-item { z-index: 2; }
-.isotope-hidden.isotope-item {
-    pointer-events: none;
-    z-index: 1;
-}
-.isotope,
-.isotope .isotope-item { transition-duration: 0.8s; }
-.isotope { transition-property: height, width; }
-.isotope .isotope-item { transition-property: transform, opacity; }
 
 //----------------------------------------------------------------------------//
 //  Modals
 //----------------------------------------------------------------------------//
 
 .modal {
-    position:absolute;
-    top:0;
-    right:0;
-    left:0;
-    bottom:0;
+    .position(fixed, 0, 0, 0, 0);
     z-index:3;
     background:@black-90;
     background:rgba(0,0,0,0.9);

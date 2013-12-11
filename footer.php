@@ -77,7 +77,6 @@
         echo '<script src ="' . $theme . '/js/bower/fitvids/jquery.fitvids.js"></script>';
 		echo '<script src ="' . $theme . '/js/plugins/jquery.spin.js"></script>';
 		echo '<script src ="' . $theme . '/js/plugins/superslides.js"></script>';
-        echo '<script src ="' . $theme . '/js/plugins/isotope.js"></script>';
 		echo '<script src ="' . $theme . '/js/project.js"></script>';
 
 	}

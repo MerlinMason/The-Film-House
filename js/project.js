@@ -32,13 +32,6 @@
             // init slideshow for homepage
             if ($("body").hasClass("home")) { this.initSlideshow(); }
 
-            // init isotope
-            $(".isotope-content").isotope({
-                filter: ".post",
-                resizable: false,
-                masonry: { columnWidth: $(".isotope-content").width() / 2 }
-            });
-
             this.bindUIActions();
         },
 
@@ -65,14 +58,6 @@
             $(".spinner").fadeOut("slow", function () {
                 $(this).spin(false);
             });
-        },
-
-        windowResized: function () {
-            if ($(window).width() > 590) {
-                $(".isotope-content").isotope({ masonry: { columnWidth: $(".isotope-content").width() / 2 } });
-            } else {
-                $(".isotope-content").isotope({ masonry: { columnWidth: $(".isotope-content").width() } });
-            }
         },
 
         // utility function to limit the amount of times a function is called
@@ -194,6 +179,7 @@
                 $(modal).fitVids();
             });
             $(".close-modal").fadeIn("fast");
+            $("body").css({ "overflow" : "hidden" });
         },
 
         initSlideshow: function () {
@@ -311,7 +297,5 @@
     $(function () { filmhouse.init(); });
     // Images Loaded
     $(window).load(function () { filmhouse.windowLoaded(); });
-    // Window Resized
-    $(window).smartresize(function () { filmhouse.windowResized(); });
 
 } (jQuery));
