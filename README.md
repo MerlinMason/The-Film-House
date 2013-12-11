@@ -63,7 +63,7 @@ DONE - Play button : W-60px by H-60px
 DONE (but to 150px as per email conversation) - TFH Logo : W-80px by H-60PX
 DONE (as per email conversation max-width 60px) Project rectangle shapes : W- 60px by H-40px
 
-1 - WAITING - Font Change - Rishab fonts attached; please change as per mockups perviously sent
+1 - DONE (use substitute font) - Font Change - Rishab fonts attached; please change as per mockups perviously sent
 
 2 - DONE - Page icons at the top - Make them central, 16:9. At the moment they’re often square and there’s an issue with the way they change with different size windows. We need them need to be a touch magnified when the cursor hovers over them. Also make them smaller. Also, the text below that appears below these should be center aligned to the boxes. 
 They also need to be behind the radial gradient at the top that appears during a hover over the logo.
@@ -82,9 +82,9 @@ They also need to be behind the radial gradient at the top that appears during a
 
 9 - DONE - Play button - Should be exactly like the mockups. Currently it looks a little stretched. It should also be bright white. Permanently like it is when you hover over it. And when you hover over it. There should be a little glow from it.
 
-9.1 WAITING - Play button - please also make it lower, as per the mockups. We want the description to come up earlier, just as the user approaches the play button, the description should pop up.
+9.1 DONE - Play button - please also make it lower, as per the mockups. We want the description to come up earlier, just as the user approaches the play button, the description should pop up.
 
-9.2 - The Film titile and description should align up with the play button side by side, as per mock up.
+9.2 - DONE - The Film titile and description should align up with the play button side by side, as per mock up.
 
 10 - DONE - TFH Logo - There’s a proportion issue, the shape needs to be constrained. Rishab to send logo with text as a single image file.
 
@@ -92,7 +92,7 @@ They also need to be behind the radial gradient at the top that appears during a
 
 12 - DONE - Description text - Needs to be left justified. i.e., ‘Directed by…’ etc, on their own lines. 
 
-13 - WAITING - Loading icon - Please get rid of this.
+13 - REJECTED (now made more subtle) - Loading icon - Please get rid of this.
 
 14 - DONE - Top Margin - Please drop the logo and the top icons a little bit, it’s too high. As per mockup.
 
@@ -102,7 +102,7 @@ They also need to be behind the radial gradient at the top that appears during a
 
 17. - DONE - Change the ‘X’ on the black over lay pages to ‘CLOSE’. The ‘x’ we feel looks like a design element and not something functional. Also moved to the bottom, as per mockup.
 
-18. - WAITING - Background images to be higher-res
+18. - DONE (see photoshop export spec) - Background images to be higher-res
 
 19. - WAITING - TFH Library needs a ‘close’ button.
 
@@ -110,9 +110,8 @@ They also need to be behind the radial gradient at the top that appears during a
 
 21 - DONE - When I go to the ‘library’ page, and then click ‘contact’, for example, the logo disappears.
 
-22. PARTIALLY DONE - about.contact.follow.library sections
+22. DONE - about.contact.follow.library sections
 - the close button needs to be centre-aligned and say ‘CLOSE’, much lower in the page
-- the playbutton and the thumbnails need to be smaller, we’re thinking a 3 x 3 type set up.
 
 23. DONE - The gradient shade that transitions in from the top where the logo is, should only occur when you hover over our logo.
 
@@ -140,4 +139,21 @@ REJECTED - The tablet and iPad apps need to be like the desktop site, and not th
 
 DONE - Overall, most of the screen elements could be a little smaller. As per the mockups, please take a look at the subtleties.
 
-WAITING - Question: We may have only 6 pieces to upload at this stage. Can we have the capacity to activate and deactivate the top icons in even numbers (so that it’s balanced?) 
+WAITING - Question: We may have only 6 pieces to upload at this stage. Can we have the capacity to activate and deactivate the top icons in even numbers (so that it’s balanced?)
+
+#Further Amends (11th Dec)
+
+- DONE - Change ' about ' credits ' links ' to buttons as mentioned above and shown in the attached.
+- DONE - Make the bottom gradient smoother.
+- Library page change as mentioned above.
+- We have decided to make the project rectangles to be made smaller and a tighter gap between them. With magnifying function when you hover over them. Its ok if it does not support screens below 900px.
+- DONE - The play button needs to go on top of the gradient. So it is active at all times.
+- The project title bar and the film description stuff should animate as soon as you reach close to the play button, instead of having to go the project title bar. So essentially both areas would function. 
+- DONE - Could you add a bit more space between the 'about' 'contact' 'follow' 'library' bar please, and make the font smaller just a tad.
+- DONE - Could you add the 'Master craftsman' text just so we get an idea of the size it displays at.
+
+MOBILE PAGE 
+
+- DONE - For the mobile page , the close button is meant to be an 'X'.
+- DONE - We need our logo to still be there on all the information pages (Black bg pages)
+- DONE - All the info on the Black Bg pages need to be center aligned. 

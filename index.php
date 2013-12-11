@@ -43,18 +43,25 @@
                             <div class="logo-container mb-05x">
                                 <img src="<?php the_field('logo'); ?>" class="preserve logo">
                             </div>
-                            <h2 class="mb-2x caps"><?php the_field('desc_short'); ?></h2>
-                            <div class="row mb-2x">
-                                <div class="col-sm-3">
-                                    <h3 class="mb-05x caps">About</h3>
+                            <h2 class="mb-1x caps"><?php the_field('desc_short'); ?></h2>
+
+                            <div class="tab-container">
+                                <nav class="tab-nav mb-1x hide-touch">
+                                    <button data-action="about" class="btn-simple selected">About</button>
+                                    <button data-action="credits" class="btn-simple">Credits</button>
+                                    <button data-action="links" class="btn-simple">Links</button>
+                                </nav>
+
+                                <div class="tab about">
+                                    <h3 class="show-touch hidden mb-1x">About</h3>
                                     <?php the_field('about'); ?>
                                 </div>
-                                <div class="col-sm-3">
-                                    <h3 class="mb-05x caps">Credits</h3>
+                                <div class="tab credits hidden">
+                                    <h3 class="show-touch hidden mb-1x">Credits</h3>
                                     <?php the_field('credits'); ?>
                                 </div>
-                                <div class="col-sm-3">
-                                    <h3 class="mb-05x caps">Links</h3>
+                                <div class="tab links hidden">
+                                    <h3 class="show-touch hidden mb-1x">Links</h3>
                                     <?php the_field('links'); ?>
                                 </div>
                             </div>

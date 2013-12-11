@@ -58,7 +58,7 @@
 <div class="spinner"></div>
 
 <?php
-	$production = true;
+	$production = false;
 	$theme = get_template_directory_uri();
 
 	// if we're in production mode, include minified concatenated script
