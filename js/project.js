@@ -224,6 +224,10 @@
                 scrollable: true
             });
 
+            // Stop the plugin automatically showing navigation
+            // We want to control this with CSS
+            $(".slides-navigation").attr("style", "");
+
             // Init hover image toggle
             if (!Modernizr.touch && $(window).width() > 728) {
                 $(".slides-container li").mousemove(filmhouse.debounce(function (e) {
