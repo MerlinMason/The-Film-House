@@ -156,4 +156,23 @@ MOBILE PAGE
 
 - DONE - For the mobile page , the close button is meant to be an 'X'.
 - DONE - We need our logo to still be there on all the information pages (Black bg pages)
-- DONE - All the info on the Black Bg pages need to be center aligned. 
+- DONE - All the info on the Black Bg pages need to be center aligned.
+
+
+#Further Amends (12th Dec)
+
+- Could we give each project a specific url? As the-most.com. It is just easier linking people to specific projects.
+- Could we make the project rectangles even more smaller, also because they get quite close to the logo on a 13 inch screen.
+- Is it possible to make the bottom gradient even more smoother? the end line is just a tad bit visible still.
+- Could you make the hover activation space below the 'about' contact ' follow' library' a bit bigger maybe just 20pixels.
+- There seems to be some kind of pixel that appears close to the logo on the black pages.
+- Sometimes the video plays on the top left in really small thumbnail, but this seems to be problem for firefox.
+- Could you finish the follow page - setting up the newsletter box and stuff as per mock up.
+
+
+MOBILE :
+
+- Activate film house logo on about pages, so it directs back to home as well.
+- Add a black bar underneath the logo so it does not impose on the info text. Just like the bar below the X
+- Remove arrows when you are on the about pages.
+- Is it possible to swipe for page transitions?
