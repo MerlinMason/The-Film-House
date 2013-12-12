@@ -253,6 +253,7 @@ button,
     width:250px;
     left:50%;
     margin-left:-125px;
+    padding-bottom:20px; // for increased hover area
     .menu {
         text-align:center;
         opacity:0;
@@ -317,12 +318,18 @@ button,
             transition:all 0.2s 0.2s ease-in;
         }
     }
+
+    // Small screens
     @media (max-width:@break-small) {
         background:none;
+        padding-bottom:0;
         .menu { display:none; }
     }
+
+    // Touch devices
     .touch & {
         background:none;
+        padding-bottom:0;
         .menu { display:none; }
     }
 }
@@ -458,6 +465,7 @@ button,
 
 .close-modal {
     display:block;
+    width:100%; // needed for firefox
     padding:@space;
     margin:0;
     .position(fixed, auto, 0, 0, 0);

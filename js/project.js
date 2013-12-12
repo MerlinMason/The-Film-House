@@ -172,9 +172,12 @@
             // Vimeo options
             var vimeoquery = "?title=0&byline=0&portrait=0&color=ffffff&autoplay=1&loop=0\"";
             var vimeoid = $.trim($(e.currentTarget).data("video"));
+            var winW = $(window).width() + "px";
+            var winH = $(window).height() - 50 + "px";
+            var size = " width=\"" + winW + "\" height=\"" + winH + "\"";
             var modal = $(".modal.video");
 
-            $(modal).prepend("<iframe class=\"player-frame\" src=\"//player.vimeo.com/video/" + vimeoid + vimeoquery + " frameborder=\"0\"></iframe>");
+            $(modal).prepend("<iframe class=\"player-frame\" src=\"//player.vimeo.com/video/" + vimeoid + vimeoquery + size + " frameborder=\"0\"></iframe>");
             $(modal).fadeIn("fast", function () {
                 $(modal).fitVids();
             });

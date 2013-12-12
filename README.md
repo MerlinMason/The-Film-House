@@ -164,9 +164,9 @@ MOBILE PAGE
 - DONE - Could we give each project a specific url? As the-most.com. It is just easier linking people to specific projects.
 - DONE - Could we make the project rectangles even more smaller, also because they get quite close to the logo on a 13 inch screen.
 - DONE - Is it possible to make the bottom gradient even more smoother? the end line is just a tad bit visible still.
-- Could you make the hover activation space below the 'about' contact ' follow' library' a bit bigger maybe just 20pixels.
-- There seems to be some kind of pixel that appears close to the logo on the black pages.
-- Sometimes the video plays on the top left in really small thumbnail, but this seems to be problem for firefox.
+- DONE - Could you make the hover activation space below the 'about' contact ' follow' library' a bit bigger maybe just 20pixels.
+- DONE - There seems to be some kind of pixel that appears close to the logo on the black pages.
+- DONE - Sometimes the video plays on the top left in really small thumbnail, but this seems to be problem for firefox.
 - Could you finish the follow page - setting up the newsletter box and stuff as per mock up.
 
 
