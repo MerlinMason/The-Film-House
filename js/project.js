@@ -184,30 +184,53 @@
 
         initSlideshow: function () {
 
-            // init slideshow
-            $(".slides").superslides({
-                slide_speed: 600,
-                pagination: false
-            });
-
             // build menu
             var pagination = $(".slides-pagination");
             var i = 0;
 
             $(".slides-container li").each(function () {
                 var title = $(this).data("title");
-                $(pagination).find(".title[data-title=" + i + "]").text(title).parent().css({ "display" : "inline-block" });
+                var slug = "#" + $(this).data("href");
+
+                $(pagination).find(".title[data-title=" + i + "]")
+                    .text(title)
+                        .parent()
+                            .attr("href", slug)
+                                .css({ "display" : "inline-block" });
+
                 i++;
             });
 
-            // Load in secondary images for hover devices and init hover image toggle
+            // Set current item (by default it's 1)
+            var hash = window.location.hash;
+
+            if (hash.length > 0) {
+                $(pagination).find(".current").removeClass("current");
+                $(pagination).find("a[href=" + hash + "]").addClass("current");
+            }
+
+            // Load in secondary images for hover devices
             if (!Modernizr.touch && $(window).width() > 728) {
                 Echo.init();
                 $(".img-swap").fadeTo(0, 0);
+            }
+
+            // Init slideshow
+            $(".slides").superslides({
+                slide_speed: 600,
+                pagination: false,
+                hashchange: true,
+                texthash: true,
+                scrollable: true
+            });
+
+            // Init hover image toggle
+            if (!Modernizr.touch && $(window).width() > 728) {
                 $(".slides-container li").mousemove(filmhouse.debounce(function (e) {
                     filmhouse.hoverSlideshow(e);
                 }, 50));
             }
+
         },
 
         logoWasActioned: function (e) {
@@ -251,7 +274,7 @@
             var slide = $(".slides-container li:visible");
             var speed = 800;
 
-            $(".slides").superslides("update");
+            //$(".slides").superslides("update");
 
             // left
             if (e.pageX <= vw / 3) {

@@ -5,15 +5,16 @@
             href="#1" class="current"><span class="title" data-title="0"></span></a><a
             href="#2"><span class="title" data-title="1"></span></a><a
             href="#3"><span class="title" data-title="2"></span></a><a
-            href="#1"><span class="title" data-title="3"></span></a><a
-            href="#2"><span class="title" data-title="4"></span>
+            href="#4"><span class="title" data-title="3"></span></a><a
+            href="#5"><span class="title" data-title="4"></span>
         </a></nav>
+
         <nav class="slides-pagination secondary"><a
-            href="#1"><span class="title" data-title="5"></span></a><a
-            href="#2"><span class="title" data-title="6"></span></a><a
-            href="#3"><span class="title" data-title="7"></span></a><a
-            href="#1"><span class="title" data-title="8"></span></a><a
-            href="#2"><span class="title" data-title="9"></span>
+            href="#5"><span class="title" data-title="5"></span></a><a
+            href="#6"><span class="title" data-title="6"></span></a><a
+            href="#7"><span class="title" data-title="7"></span></a><a
+            href="#8"><span class="title" data-title="8"></span></a><a
+            href="#9"><span class="title" data-title="9"></span>
         </a></nav>
 
         <nav class="slides-navigation">
@@ -24,12 +25,12 @@
         <ul class="slides-container">
 
             <?php
-                $args = array( 'numberposts' => 10, 'category' => '4' );
+                $args = array('numberposts' => 10, 'category' => '4');
                 $lastposts = get_posts( $args );
                 foreach($lastposts as $post) : setup_postdata($post);
             ?>
 
-                <li data-title="<?php the_title(); ?>">
+                <li data-title="<?php the_title(); ?>" data-href="<?php echo(basename(get_permalink())); ?>">
                     <img src="<?php the_field('bg_main'); ?>" alt="<?php the_title(); ?>">
                     <img class="img-swap left" src="<?php bloginfo('template_url'); ?>/img/blank.gif" alt="<?php the_title(); ?>" data-echo="<?php the_field('bg_left'); ?>">
                     <img class="img-swap right" src="<?php bloginfo('template_url'); ?>/img/blank.gif" alt="<?php the_title(); ?>" data-echo="<?php the_field('bg_right'); ?>">
