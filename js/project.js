@@ -268,7 +268,8 @@
 
             // Init slideshow
             $(".slides").superslides({
-                slide_speed: 600,
+                slide_easing: "easeInOutCubic",
+                slide_speed: Modernizr.touch ? 200 : 600,
                 pagination: false,
                 hashchange: true,
                 texthash: true,
