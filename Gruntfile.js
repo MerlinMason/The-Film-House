@@ -63,12 +63,15 @@ module.exports = function (grunt) {
         },
 
         concat: {
+            options: {
+                separator: ";",
+            },
             dist: {
                 src: [
                     "js/bower/jquery/jquery.js",
                     "js/bower/modernizr/modernizr.js",
                     "js/bower/spinjs/spin.js",
-                    "js/bower/jquery.animate-enhanced/scripts/src/jquery.animate-enhanced.js",
+                    "js/bower/jquery.animate-enhanced/jquery.animate-enhanced.min.js",
                     "js/bower/echojs/dist/echo.js",
                     "js/bower/fitvids/jquery.fitvids.js",
                     "js/bower/hammerjs/dist/jquery.hammer.js",
@@ -126,6 +129,6 @@ module.exports = function (grunt) {
     // List of available tasks
     grunt.registerTask("default", []);
     grunt.registerTask("buildcss", ["less", "autoprefixer", "csslint", "cssmin", "notify:less"]);
-    grunt.registerTask("buildjs", ["jshint", "concat", "uglify", "notify:js"]);
+    grunt.registerTask("buildjs", ["jshint", "concat", "notify:js"]);
 
 };

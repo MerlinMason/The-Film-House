@@ -72,7 +72,7 @@
 		echo '<script src ="' . $theme . '/js/bower/jquery/jquery.js"></script>';
 		echo '<script src ="' . $theme . '/js/bower/modernizr/modernizr.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/spinjs/spin.js"></script>';
-        echo '<script src ="' . $theme . '/js/bower/jquery.animate-enhanced/scripts/src/jquery.animate-enhanced.js"></script>';
+        echo '<script src ="' . $theme . '/js/bower/jquery.animate-enhanced/jquery.animate-enhanced.min.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/echojs/dist/echo.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/fitvids/jquery.fitvids.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/hammerjs/dist/jquery.hammer.js"></script>';
