@@ -1,4 +1,7 @@
-<p>email form to be added here</p>
+<p>Join our mailing list</p>
+<?php mailchimpSF_signup_form(); ?>
+
+<hr>
 
 <p>Or follow us on:</p>
 <ul class="social">

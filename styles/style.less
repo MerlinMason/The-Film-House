@@ -144,21 +144,29 @@ input[type='email'],
 input[type='password'],
 textarea {
     padding:(@space/2);
-    border:none;
+    margin:0;
+    background:transparent;
+    border:1px solid #fff;
     .placeholder();
+    color:#fff;
+    text-align:center;
+    opacity:0.7;
+    transition:opacity 0.2s;
+    max-width:280px;
 }
 
 input[type='text']:hover,
 input[type='email']:hover,
 input[type='password']:hover,
 textarea:hover {
-
+    opacity:1;
 }
 
 input[type='text']:focus,
 input[type='email']:focus,
 input[type='password']:focus,
 textarea:focus {
+    opacity:1;
     outline:none;
 }
 
@@ -173,7 +181,8 @@ button,
     background:transparent;
     border:1px solid @black-20;
     color:@black-20;
-    transition: all 0.2s;
+    transition:all 0.2s;
+    max-width:280px;
     .caps();
     &.selected,
     &:hover,
@@ -210,6 +219,20 @@ button,
         border-top:1px solid #fff;
     }
 }
+
+html #mc_signup_submit { margin:0; }
+
+hr {
+    display:block;
+    height:1px;
+    width:30px;
+    border:0;
+    border-top:1px solid #fff;
+    margin:(@space*2) auto;
+}
+
+.formerror { color:#b4002d; }
+.mc_success_msg { margin-bottom:(@space/2); }
 
 .tab-nav {
     margin-left:-6px; // counteract button padding for left alignment
@@ -466,6 +489,7 @@ button,
 .close-modal {
     display:block;
     width:100%; // needed for firefox
+    max-width:auto;
     padding:@space;
     margin:0;
     .position(fixed, auto, 0, 0, 0);
@@ -494,3 +518,10 @@ button,
     background:@black-90;
     z-index:5;
 }
+
+
+//----------------------------------------------------------------------------//
+//  Mailchimp Form
+//----------------------------------------------------------------------------//
+
+

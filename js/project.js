@@ -27,11 +27,16 @@
         touchInfoIsVisible: false,
 
         init: function () {
+            // Start spinner
             $(".spinner").spin("standard");
 
-            // init slideshow for homepage
+            // Init slideshow for homepage
             if ($("body").hasClass("home")) { this.initSlideshow(); }
 
+            // Progressive enhancement for mailchimp forms
+            filmhouse.fixMailchimForm();
+
+            // Bind all events
             this.bindUIActions();
         },
 
@@ -51,7 +56,8 @@
             $(".sitename a").on("click", function (e) { filmhouse.logoWasActioned(e); });
             $(".touch-info").on("click", function (e) { filmhouse.touchInfoWasActioned(e); });
             $(".isotope-filters button").on("click", function (e) { filmhouse.filterIsotope(e); });
-            $(".tab-container button").on("click", function (e) {filmhouse.tabWasAction(e); });
+            $(".tab-container button").on("click", function (e) { filmhouse.tabWasAction(e); });
+            $("#mc_signup_form").on("submit", function (e) { filmhouse.mailchimpWasSubmitted(e); });
         },
 
         windowLoaded: function () {
@@ -70,6 +76,48 @@
                     fn.apply(context, args);
                 }, delay);
             };
+        },
+
+        fixMailchimForm: function () {
+
+            // Get rid of some stuff we don't need
+            $(".mc_required, #mc-indicates-required").remove();
+
+            // If we have placeholder support ditch the labels
+            if (Modernizr.input.placeholder) {
+                $(".mc_var_label").remove();
+                $("#mc_mv_EMAIL").attr("placeholder", "YOUR EMAIL");
+                $("#mc_mv_FNAME").attr("placeholder", "FIRST NAME");
+                $("#mc_mv_LNAME").attr("placeholder", "LAST NAME");
+            }
+        },
+
+        mailchimpWasSubmitted: function (e) {
+
+            var responses = [];
+
+            responses.push($("#mc_mv_EMAIL").val());
+            responses.push($("#mc_mv_FNAME").val());
+            responses.push($("#mc_mv_LNAME").val());
+
+            console.log(responses);
+
+            function checkArray(my_arr) {
+                for (var i = 0; i < my_arr.length; i++) {
+                    if (my_arr[i] === "") {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            if (checkArray(responses)) {
+                // got everything - lets submit it
+                return;
+            } else {
+                $("#mc_signup_form").prepend("<p class=formerror>Sorry, all fields are required</p>");
+                e.preventDefault();
+            }
         },
 
         launchPageModal: function (e) {

@@ -167,7 +167,9 @@ MOBILE PAGE
 - DONE - Could you make the hover activation space below the 'about' contact ' follow' library' a bit bigger maybe just 20pixels.
 - DONE - There seems to be some kind of pixel that appears close to the logo on the black pages.
 - DONE - Sometimes the video plays on the top left in really small thumbnail, but this seems to be problem for firefox.
-- Could you finish the follow page - setting up the newsletter box and stuff as per mock up.
+- DONE - Could you finish the follow page - setting up the newsletter box and stuff as per mock up.
+- DONE - Update with new images in email.
+- Optimise current theme images
 
 
 MOBILE :
