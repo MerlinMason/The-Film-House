@@ -220,7 +220,10 @@ button,
     }
 }
 
-html #mc_signup_submit { margin:0; }
+html #mc_signup_submit {
+    margin:0;
+    padding:(@space/2);
+}
 
 hr {
     display:block;
@@ -325,7 +328,7 @@ hr {
             background-repeat:no-repeat;
         }
         @media (max-width:@break-small) {
-            padding:12px 0;
+            padding:12px 0 0 0;
             width:130px;
             a {
                 .size(130px, 61px);
@@ -347,6 +350,14 @@ hr {
         background:none;
         padding-bottom:0;
         .menu { display:none; }
+
+        // Library page
+        .page-template-default & {
+            width:100%;
+            background:#000;
+            margin:0;
+            left:0;
+        }
     }
 
     // Touch devices
@@ -489,7 +500,7 @@ hr {
 .close-modal {
     display:block;
     width:100%; // needed for firefox
-    max-width:auto;
+    max-width:none;
     padding:@space;
     margin:0;
     .position(fixed, auto, 0, 0, 0);

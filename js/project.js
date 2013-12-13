@@ -57,7 +57,7 @@
             $(".touch-info").on("click", function (e) { filmhouse.touchInfoWasActioned(e); });
             $(".isotope-filters button").on("click", function (e) { filmhouse.filterIsotope(e); });
             $(".tab-container button").on("click", function (e) { filmhouse.tabWasAction(e); });
-            $("#mc_signup_form").on("submit", function (e) { filmhouse.mailchimpWasSubmitted(e); });
+            $(".modal.follow #mc_signup_form, .modal.touch #mc_signup_form").on("submit", function (e) { filmhouse.mailchimpWasSubmitted(e); });
         },
 
         windowLoaded: function () {
@@ -81,26 +81,24 @@
         fixMailchimForm: function () {
 
             // Get rid of some stuff we don't need
-            $(".mc_required, #mc-indicates-required").remove();
+            $(".mc_required, .modal.touch #mc-indicates-required, .modal.follow #mc-indicates-required").remove();
 
             // If we have placeholder support ditch the labels
             if (Modernizr.input.placeholder) {
                 $(".mc_var_label").remove();
-                $("#mc_mv_EMAIL").attr("placeholder", "YOUR EMAIL");
-                $("#mc_mv_FNAME").attr("placeholder", "FIRST NAME");
-                $("#mc_mv_LNAME").attr("placeholder", "LAST NAME");
+                $(".modal.touch #mc_mv_EMAIL, .modal.follow #mc_mv_EMAIL").attr("placeholder", "YOUR EMAIL");
+                $(".modal.touch #mc_mv_FNAME, .modal.follow #mc_mv_FNAME").attr("placeholder", "FIRST NAME");
+                $(".modal.touch #mc_mv_LNAME, .modal.follow #mc_mv_LNAME").attr("placeholder", "LAST NAME");
             }
         },
 
         mailchimpWasSubmitted: function (e) {
-
+            var form = $(e.currentTarget);
             var responses = [];
 
-            responses.push($("#mc_mv_EMAIL").val());
-            responses.push($("#mc_mv_FNAME").val());
-            responses.push($("#mc_mv_LNAME").val());
-
-            console.log(responses);
+            responses.push(form.find("#mc_mv_EMAIL").val());
+            responses.push(form.find("#mc_mv_FNAME").val());
+            responses.push(form.find("#mc_mv_LNAME").val());
 
             function checkArray(my_arr) {
                 for (var i = 0; i < my_arr.length; i++) {
@@ -115,7 +113,7 @@
                 // got everything - lets submit it
                 return;
             } else {
-                $("#mc_signup_form").prepend("<p class=formerror>Sorry, all fields are required</p>");
+                form.prepend("<p class=formerror>Sorry, all fields are required</p>");
                 e.preventDefault();
             }
         },
@@ -176,6 +174,10 @@
 
                 // Reset menu
                 $(".menu-header .current-menu-item").removeClass("current-menu-item");
+
+                // Reset header
+                $(".page-header").attr("style", "");
+
                 // If it's the library we need to reset the current item to libary
                 if ($("body").hasClass("page-template-default")) {
                     $(".menu-header li:last-child").addClass("current-menu-item");
@@ -234,7 +236,6 @@
         },
 
         initSlideshow: function () {
-
             // build menu
             var pagination = $(".slides-pagination");
             var i = 0;
@@ -254,7 +255,6 @@
 
             // Set current item (by default it's 1)
             var hash = window.location.hash;
-
             if (hash.length > 0) {
                 $(pagination).find(".current").removeClass("current");
                 $(pagination).find("a[href=" + hash + "]").addClass("current");
@@ -275,6 +275,14 @@
                 scrollable: true
             });
 
+            // Bind swipe events to slideshow
+            $(".slides").hammer().on("swipeleft", function () {
+                $(this).superslides("animate", "next");
+            });
+            $(".slides").hammer().on("swiperight", function () {
+                $(this).superslides("animate", "prev");
+            });
+
             // Stop the plugin automatically showing navigation
             // We want to control this with CSS
             $(".slides-navigation").attr("style", "");
@@ -289,13 +297,42 @@
         },
 
         logoWasActioned: function (e) {
-            if (Modernizr.touch || $(window).width() < 729) {
-                e.preventDefault();
-                $(".modal.touch").fadeIn("fast");
-                $(".close-modal").fadeIn("fast");
-                // stop the rest of the page being scrollable
-                $("body").css({ "overflow" : "hidden" });
+
+            // if we already have a modal or post info showing we should hide it
+            if ($(".modal").is(":visible") || filmhouse.touchInfoIsVisible) {
+                if ($(".modal").is(":visible")) {
+                    e.preventDefault();
+                    filmhouse.pageModalShouldClose();
+                }
+
+                if (filmhouse.touchInfoIsVisible) {
+                    e.preventDefault();
+                    filmhouse.closeTouchInfoWasActioned();
+                }
+            // but if we don't, and we're on a small device
+            // we pop up the touch info
+            } else {
+                if (Modernizr.touch || $(window).width() < 729) {
+                    e.preventDefault();
+                    $(".close-modal").fadeIn("fast");
+                    $(".modal.touch").fadeIn("fast", function () {
+                        // stop the rest of the page being scrollable
+                        $("body").css({ "overflow" : "hidden" });
+                        // block out header
+                        $(".page-header").css({
+                            "width" : "100%",
+                            "background" : "#000",
+                            "margin" : "0",
+                            "left" : "0",
+                            "zIndex" : "11"
+                        });
+                    });
+
+                }
             }
+            // if none of these conditions are met, we assume the link should
+            // function as default and return to the home page
+
         },
 
         touchInfoWasActioned: function (e) {
@@ -306,16 +343,29 @@
                 $(".close-modal").fadeIn("fast");
                 // stop the rest of the page being scrollable
                 $("body").css({ "overflow" : "hidden" });
+                // block out the header
+                $(".page-header").css({
+                    "width" : "100%",
+                    "background" : "#000",
+                    "margin" : "0",
+                    "left" : "0"
+                });
                 filmhouse.touchInfoIsVisible = true;
             }
         },
 
         closeTouchInfoWasActioned: function () {
+            // Reset scroll and remove modal
             $(".slide-info.show-touch").animate({
                 scrollTop: 0
             }, 400, function () {
+                // Reset header styles
+                $(".page-header").attr("style", "");
+
                 filmhouse.touchInfoIsVisible = false;
+
                 $(this).removeClass("show-touch");
+
                 $(".slides-navigation").fadeIn("fast", function () {
                     $(".close-modal").fadeOut("fast");
                     // reset page scroll

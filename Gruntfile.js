@@ -71,6 +71,7 @@ module.exports = function (grunt) {
                     "js/bower/jquery.animate-enhanced/scripts/src/jquery.animate-enhanced.js",
                     "js/bower/echojs/dist/echo.js",
                     "js/bower/fitvids/jquery.fitvids.js",
+                    "js/bower/hammerjs/dist/jquery.hammer.js",
                     "js/plugins/jquery.spin.js",
                     "js/plugins/superslides.js",
                     "js/project.js"

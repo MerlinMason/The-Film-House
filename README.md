@@ -169,12 +169,12 @@ MOBILE PAGE
 - DONE - Sometimes the video plays on the top left in really small thumbnail, but this seems to be problem for firefox.
 - DONE - Could you finish the follow page - setting up the newsletter box and stuff as per mock up.
 - DONE - Update with new images in email.
-- Optimise current theme images
+- DONE - Optimise current theme images
 
 
 MOBILE :
 
-- Activate film house logo on about pages, so it directs back to home as well.
-- Add a black bar underneath the logo so it does not impose on the info text. Just like the bar below the X
-- Remove arrows when you are on the about pages.
-- Is it possible to swipe for page transitions?
+- DONE - Activate film house logo on about pages, so it directs back to home as well.
+- DONE - Add a black bar underneath the logo so it does not impose on the info text. Just like the bar below the X
+- DONE - Remove arrows when you are on the about pages.
+- DONE - Is it possible to swipe for page transitions?
