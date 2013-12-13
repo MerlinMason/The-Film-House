@@ -153,6 +153,7 @@ textarea {
     opacity:0.7;
     transition:opacity 0.2s;
     max-width:280px;
+    border-radius:0; // iOS
 }
 
 input[type='text']:hover,
@@ -184,6 +185,7 @@ button,
     transition:all 0.2s;
     max-width:280px;
     cursor:pointer;
+    border-radius:0; // iOS
     .caps();
     &.selected,
     &:hover,
@@ -224,6 +226,7 @@ button,
 html #mc_signup_submit {
     margin:0;
     padding:(@space/2);
+    width:100%;
 }
 
 hr {
