@@ -63,15 +63,11 @@ module.exports = function (grunt) {
         },
 
         concat: {
-            options: {
-                separator: ";",
-            },
             dist: {
                 src: [
                     "js/bower/jquery/jquery.js",
                     "js/bower/modernizr/modernizr.js",
                     "js/bower/spinjs/spin.js",
-                    "js/bower/jquery.animate-enhanced/jquery.animate-enhanced.min.js",
                     "js/bower/echojs/dist/echo.js",
                     "js/bower/fitvids/jquery.fitvids.js",
                     "js/bower/hammerjs/dist/jquery.hammer.js",
@@ -98,7 +94,10 @@ module.exports = function (grunt) {
                 tasks: "buildcss"
             },
             scripts: {
-                files: "js/project.js",
+                files: [
+                    "js/project.js",
+                    "Gruntfile.js"
+                ],
                 tasks: "buildjs"
             }
         },

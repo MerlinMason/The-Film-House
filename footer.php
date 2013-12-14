@@ -58,7 +58,7 @@
 <div class="spinner"></div>
 
 <?php
-	$production = false;
+	$production = true;
 	$theme = get_template_directory_uri();
 
 	// if we're in production mode, include minified concatenated script
@@ -72,7 +72,6 @@
 		echo '<script src ="' . $theme . '/js/bower/jquery/jquery.js"></script>';
 		echo '<script src ="' . $theme . '/js/bower/modernizr/modernizr.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/spinjs/spin.js"></script>';
-        echo '<script src ="' . $theme . '/js/bower/jquery.animate-enhanced/jquery.animate-enhanced.min.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/echojs/dist/echo.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/fitvids/jquery.fitvids.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/hammerjs/dist/jquery.hammer.js"></script>';

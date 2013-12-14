@@ -6,7 +6,6 @@
   "devDependencies": {
     "modernizr": "~2.6.2",
     "spinjs": "~1.3.2",
-    "jquery.animate-enhanced": "*",
     "echojs": "~1.4.0",
     "fitvids": "~1.0.3",
     "jquery-hammerjs": "*"
