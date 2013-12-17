@@ -251,7 +251,8 @@
                         easing: "easeInOutCubic",
                         animation: "slide",
                         animationSpeed: Modernizr.touch ? 200 : 600,
-                        controlNav: false
+                        controlNav: false,
+                        slideshow: false
                     });
                     $(modal).fadeIn("fast");
                 });
