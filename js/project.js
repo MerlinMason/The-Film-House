@@ -243,7 +243,7 @@
             // if media is a slideshow...
             if ($(e.currentTarget).is("[data-slideshow]")) {
 
-                var markup = $.trim($(e.currentTarget).data("slideshow")) + " .target";
+                var markup = $.trim($(e.currentTarget).data("slideshow")) + " .flexslider";
 
                 $(modal).load(markup, function () {
                     // Init slideshow
