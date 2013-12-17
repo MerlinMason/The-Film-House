@@ -49,6 +49,7 @@
 @import "grid.less";
 // Third Party
 @import "superslides.less";
+@import "flexslider.less";
 @import "entypo.less";
 // Fonts
 
@@ -250,7 +251,7 @@ hr {
     .btn-simple:last-child:after { content:""; }
 }
 
-.play-video {
+.play-media {
     cursor:pointer;
     .center-block();
     .square(70px);
@@ -441,6 +442,7 @@ hr {
         position:relative;
         float:none;
         display:inline-block;
+        vertical-align:top;
         .post-contents { position:relative; }
         img {
             display:block;
@@ -448,7 +450,7 @@ hr {
             height:auto;
             margin-bottom:(@space/2);
         }
-        .play-video {
+        .play-media {
             text-align:center;
             position:absolute;
             z-index:1;
@@ -475,10 +477,9 @@ hr {
     background:@black-90;
     background:rgba(0,0,0,0.9);
     display:none;
-    &.video {
+    &.media {
         z-index:10;
-        padding:(@space*3) (@space*6);
-        padding:10vh;
+        padding:(@space*2);
         @media (max-width:@break-small) {
             padding:(@space/2);
             padding:10vh 0;

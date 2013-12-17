@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<div class="modal video"></div>
+<div class="modal media"></div>
 
 <div class="modal touch">
     <nav class="touch-menu caps">
@@ -75,6 +75,7 @@
         echo '<script src ="' . $theme . '/js/bower/echojs/dist/echo.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/fitvids/jquery.fitvids.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/hammerjs/dist/jquery.hammer.js"></script>';
+        echo '<script src ="' . $theme . '/js/bower/flexslider/jquery.flexslider.js"></script>';
 		echo '<script src ="' . $theme . '/js/plugins/jquery.spin.js"></script>';
         echo '<script src ="' . $theme . '/js/plugins/jquery.easing.js"></script>';
 		echo '<script src ="' . $theme . '/js/plugins/superslides.js"></script>';

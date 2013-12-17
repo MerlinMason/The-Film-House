@@ -12,7 +12,7 @@
         </article>
 
         <section class="row"><?php
-            $args = array( 'numberposts' => 99, 'child_of' => '6' );
+            $args = array( 'numberposts' => 99 );
             $lastposts = get_posts( $args );
             foreach($lastposts as $post) : setup_postdata($post);
             // funky formatting below to ensure no whitespace between articles
@@ -21,7 +21,15 @@
 
                 <div class="post-contents">
                     <img src="<?php the_field('thumb'); ?>">
-                    <i class="play-video" data-video="<?php the_field('vimeo_id'); ?>"></i>
+
+                    <?php if (in_category('video')) { ?>
+                        <i class="play-media" data-video="<?php the_field('vimeo_id'); ?>"></i>
+                    <?php } ?>
+
+                    <?php if (in_category('photo')) { ?>
+                        <i class="play-media" data-slideshow="<?php the_permalink(); ?>"></i>
+                    <?php } ?>
+
                 </div>
                 <h2><?php the_title(); ?> - <?php the_field('desc_short'); ?></h2>
 

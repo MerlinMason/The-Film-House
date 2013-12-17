@@ -32,12 +32,27 @@
 
                 <li data-title="<?php the_title(); ?>" data-href="<?php echo(basename(get_permalink())); ?>">
                     <img src="<?php the_field('bg_main'); ?>" alt="<?php the_title(); ?>">
-                    <img class="img-swap left" src="<?php bloginfo('template_url'); ?>/img/blank.gif" alt="<?php the_title(); ?>" data-echo="<?php the_field('bg_left'); ?>">
-                    <img class="img-swap right" src="<?php bloginfo('template_url'); ?>/img/blank.gif" alt="<?php the_title(); ?>" data-echo="<?php the_field('bg_right'); ?>">
+
+                    <?php if(get_field('bg_left')) { ?>
+                        <img class="img-swap left" src="<?php bloginfo('template_url'); ?>/img/blank.gif" alt="<?php the_title(); ?>" data-echo="<?php the_field('bg_left'); ?>">
+                    <?php } ?>
+
+                    <?php if(get_field('bg_right')) { ?>
+                        <img class="img-swap right" src="<?php bloginfo('template_url'); ?>/img/blank.gif" alt="<?php the_title(); ?>" data-echo="<?php the_field('bg_right'); ?>">
+                    <?php } ?>
+
                     <div class="container">
                         <div class="play-icon-container">
                             <img src="<?php the_field('logo'); ?>" class="preserve touch-logo">
-                            <i class="play-video" data-video="<?php the_field('vimeo_id'); ?>"></i>
+
+                            <?php if (in_category('video')) { ?>
+                                <i class="play-media" data-video="<?php the_field('vimeo_id'); ?>"></i>
+                            <?php } ?>
+
+                            <?php if (in_category('photo')) { ?>
+                                <i class="play-media" data-slideshow="<?php the_permalink(); ?>"></i>
+                            <?php } ?>
+
                             <a href="#" class="touch-info caps">Info</a>
                         </div>
                         <article class="slide-info">

@@ -10,7 +10,7 @@
     "compatible-vendor-prefixes": false,
     "regex-selectors": false,
     "errors": true,
-    "duplicate-background-images": true,
+    "duplicate-background-images": false,
     "duplicate-properties": true,
     "empty-rules": true,
     "selector-max-approaching": true,

@@ -57,7 +57,7 @@
             max-width:100%;
         }
         .logo-container { display:none; }
-        .play-video, .play-video:after { background-size:50px; }
+        .play-media, .play-media:after { background-size:50px; }
         .container .play-icon-container {
             top:170px;
             bottom:auto;
@@ -105,7 +105,7 @@
         .logo-container,
         .tab-nav { display:none; }
         .show-touch { display:block; }
-        .play-video, .play-video:after { background-size:50px; }
+        .play-media, .play-media:after { background-size:50px; }
         .container .play-icon-container {
             top:170px;
             bottom:auto;
@@ -204,17 +204,6 @@
     &.secondary {
         left:62%;
         right:(@space*4);
-        .title {
-            left:auto;
-            right:-2px;
-            text-align:right;
-        }
-    }
-    @media (max-width:@break-medium) {
-        .col-sm-2 {
-            padding-left:(@space/2);
-            padding-right:(@space/2);
-        }
     }
 
     // for touch and small screens we want to hide pagination
