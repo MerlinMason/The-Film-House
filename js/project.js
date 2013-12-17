@@ -247,27 +247,30 @@
                 $(".spinner").show().spin("standard");
 
                 // slideshow markup
-                var markup = $.trim($(e.currentTarget).data("slideshow")) + " .flexslider";
+                var markup = $.trim($(e.currentTarget).data("slideshow"));
 
                 // ajax it in
-                $(modal).load(markup, function () {
-                    // Init slideshow
-                    $(modal).find(".flexslider").flexslider({
-                        easing: "easeInOutCubic",
-                        animation: "slide",
-                        animationSpeed: Modernizr.touch ? 200 : 600,
-                        controlNav: false,
-                        slideshow: false
-                    });
+                $.ajax({
+                    cache: false,
+                    url: markup,
+                    success: function (data) {
+                        $(modal).html(data).waitForImages(function () {
 
-                    $(modal).fadeIn("fast");
+                            $(modal).show();
 
-                    // allow a small amount of time for images to actually load
-                    setTimeout(function () {
-                        $(".spinner").fadeOut("slow", function () {
-                            $(this).spin(false);
+                            $(modal).find(".flexslider").flexslider({
+                                easing: "easeInOutCubic",
+                                animation: "slide",
+                                animationSpeed: Modernizr.touch ? 200 : 600,
+                                controlNav: false,
+                                slideshow: false
+                            });
+
+                            $(".spinner").fadeOut("slow", function () {
+                                $(this).spin(false);
+                            });
                         });
-                    }, 1000);
+                    }
                 });
             }
 

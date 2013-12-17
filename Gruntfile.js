@@ -74,6 +74,7 @@ module.exports = function (grunt) {
                     "js/bower/flexslider/jquery.flexslider.js",
                     "js/plugins/jquery.spin.js",
                     "js/plugins/jquery.easing.js",
+                    "js/plugins/waitForImages.js",
                     "js/plugins/superslides.js",
                     "js/project.js"
                 ],
