@@ -243,8 +243,13 @@
             // if media is a slideshow...
             if ($(e.currentTarget).is("[data-slideshow]")) {
 
+                // set spinner going
+                $(".spinner").spin("standard");
+
+                // slideshow markup
                 var markup = $.trim($(e.currentTarget).data("slideshow")) + " .flexslider";
 
+                // ajax it in
                 $(modal).load(markup, function () {
                     // Init slideshow
                     $(modal).find(".flexslider").flexslider({
@@ -254,7 +259,15 @@
                         controlNav: false,
                         slideshow: false
                     });
+
                     $(modal).fadeIn("fast");
+
+                    // allow a small amount of time for images to actually load
+                    setTimeout(function () {
+                        $(".spinner").fadeOut("slow", function () {
+                            $(this).spin(false);
+                        });
+                    }, 1000);
                 });
             }
 
