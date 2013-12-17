@@ -6,7 +6,7 @@
         <article class="post showreel">
             <div class="post-contents">
                 <img src="<?php the_field('showreel_thumbnail', 'options'); ?>">
-                <i class="play-video" data-video="<?php the_field('showreel_id', 'options'); ?>"></i>
+                <i class="play-media" data-video="<?php the_field('showreel_id', 'options'); ?>"></i>
             </div>
             <h2><?php the_field('showreel_title', 'options'); ?></h2>
         </article>
