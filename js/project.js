@@ -244,7 +244,7 @@
             if ($(e.currentTarget).is("[data-slideshow]")) {
 
                 // set spinner going
-                $(".spinner").spin("standard");
+                $(".spinner").show().spin("standard");
 
                 // slideshow markup
                 var markup = $.trim($(e.currentTarget).data("slideshow")) + " .flexslider";
