@@ -89,7 +89,7 @@
                 $(".modal.touch #mc_mv_LNAME, .modal.follow #mc_mv_LNAME").attr("placeholder", "LAST NAME");
             }
 
-            var mailchimpSF = { "ajax_url": "http:\/\/merlindev.co.uk\/filmhouse\/" };
+            var mailchimpSF = { "ajax_url": "http:\/\/thefilmhouse.qa" };
 
             // Change our submit type from HTML (default) to JS
             $("#mc_submit_type").val("js");
@@ -239,9 +239,9 @@
                 // Vimeo options
                 var vimeoquery = "?title=0&byline=0&portrait=0&color=ffffff&autoplay=1&loop=0\"";
                 var vimeoid = $.trim($(e.currentTarget).data("video"));
-                var winW = $(window).width() - 72;
-                var winH = (Math.floor($(window).height() - 72) * 0.75);
-                var size = " width=\"" + winW + "\" height=\"" + winH + "\"";
+                var playerWidth = $(window).width() - 72;
+                var playerHeight = playerWidth * 9 / 16; // 9:16 ratio
+                var size = " width=\"" + playerWidth + "\" height=\"" + playerHeight + "\"";
                 var embed = "<iframe class=\"player-frame\" src=\"//player.vimeo.com/video/" + vimeoid + vimeoquery + size + " frameborder=\"0\"></iframe>";
 
                 $(modal).prepend(embed);
