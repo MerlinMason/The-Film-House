@@ -239,8 +239,17 @@ hr {
     margin:(@space*2) auto;
 }
 
-.formerror { color:#b4002d; }
-.mc_success_msg { margin-bottom:(@space/2); }
+.mc_error_msg {
+    color:#b4002d;
+    margin-bottom:(@space/2);
+    display:inline-block;
+    font-size:14px;
+}
+.mc_success_msg {
+    margin-bottom:(@space/2);
+    display:inline-block;
+    font-size:14px;
+}
 
 .tab-nav {
     margin-left:-6px; // counteract button padding for left alignment
@@ -481,8 +490,7 @@ hr {
         z-index:10;
         padding:(@space*2);
         @media (max-width:@break-small) {
-            padding:(@space/2);
-            padding:10vh 0;
+            padding:(@space/2)!important;
         }
     }
     &.touch {

@@ -34,7 +34,7 @@
             if ($("body").hasClass("home")) { this.initSlideshow(); }
 
             // Progressive enhancement for mailchimp forms
-            filmhouse.fixMailchimForm();
+            filmhouse.mailchimpInit();
 
             // Bind all events
             this.bindUIActions();
@@ -56,7 +56,6 @@
             $(".sitename a").on("click", function (e) { filmhouse.logoWasActioned(e); });
             $(".touch-info").on("click", function (e) { filmhouse.touchInfoWasActioned(e); });
             $(".tab-container button").on("click", function (e) { filmhouse.tabWasAction(e); });
-            $(".modal.follow #mc_signup_form, .modal.touch #mc_signup_form").on("submit", function (e) { filmhouse.mailchimpWasSubmitted(e); });
         },
 
         windowLoaded: function () {
@@ -77,7 +76,7 @@
             };
         },
 
-        fixMailchimForm: function () {
+        mailchimpInit: function () {
 
             // Get rid of some stuff we don't need
             $(".mc_required, .modal.touch #mc-indicates-required, .modal.follow #mc-indicates-required").remove();
@@ -89,32 +88,43 @@
                 $(".modal.touch #mc_mv_FNAME, .modal.follow #mc_mv_FNAME").attr("placeholder", "FIRST NAME");
                 $(".modal.touch #mc_mv_LNAME, .modal.follow #mc_mv_LNAME").attr("placeholder", "LAST NAME");
             }
-        },
 
-        mailchimpWasSubmitted: function (e) {
-            var form = $(e.currentTarget);
-            var responses = [];
+            var mailchimpSF = { "ajax_url": "http:\/\/merlindev.co.uk\/filmhouse\/" };
 
-            responses.push(form.find("#mc_mv_EMAIL").val());
-            responses.push(form.find("#mc_mv_FNAME").val());
-            responses.push(form.find("#mc_mv_LNAME").val());
+            // Change our submit type from HTML (default) to JS
+            $("#mc_submit_type").val("js");
 
-            function checkArray(my_arr) {
-                for (var i = 0; i < my_arr.length; i++) {
-                    if (my_arr[i] === "") {
-                        return false;
-                    }
+            function beforeSubmit() {
+                // Disable the submit button
+                $("#mc_signup_submit").attr("disabled", "disabled");
+            }
+
+            function onSuccess(data) {
+                // Re-enable the submit button
+                $("#mc_signup_submit").removeAttr("disabled");
+
+                // Put the response in the message div
+                $("#mc_message").html(data);
+
+                // See if we're successful, if so, wipe the fields
+                var reg = new RegExp("class=\"mc_success_msg\"", "i");
+                if (reg.test(data)) {
+                    $("#mc_signup_form").each(function () {
+                        this.reset();
+                    });
+                    $("#mc_submit_type").val("js");
                 }
-                return true;
             }
 
-            if (checkArray(responses)) {
-                // got everything - lets submit it
-                return;
-            } else {
-                form.prepend("<p class=formerror>Sorry, all fields are required</p>");
-                e.preventDefault();
-            }
+            // Attach our form submitter action
+            $("#mc_signup_form").ajaxForm({
+                url: mailchimpSF.ajax_url,
+                type: "POST",
+                dataType: "text",
+                beforeSubmit: beforeSubmit,
+                success: onSuccess
+            });
+
         },
 
         launchPageModal: function (e) {
@@ -229,8 +239,8 @@
                 // Vimeo options
                 var vimeoquery = "?title=0&byline=0&portrait=0&color=ffffff&autoplay=1&loop=0\"";
                 var vimeoid = $.trim($(e.currentTarget).data("video"));
-                var winW = $(window).width();
-                var winH = Math.floor($(window).height() * 0.75);
+                var winW = $(window).width() - 72;
+                var winH = (Math.floor($(window).height() - 72) * 0.75);
                 var size = " width=\"" + winW + "\" height=\"" + winH + "\"";
                 var embed = "<iframe class=\"player-frame\" src=\"//player.vimeo.com/video/" + vimeoid + vimeoquery + size + " frameborder=\"0\"></iframe>";
 
