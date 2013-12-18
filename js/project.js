@@ -165,8 +165,8 @@
                     scrollTop: 0
                 }, 400, function () {
                     $(".modal:visible").fadeOut("fast", function () {
-                        // If it's a video / slideshow - remove it
-                        $(this).find("iframe, .flexslider").remove();
+                        // Remove modal content
+                        $(this).empty();
                         // reset the scroll stopper
                         $("body").css({ "overflow" : "auto" });
                         // hide the close button
