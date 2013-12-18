@@ -76,10 +76,12 @@
         echo '<script src ="' . $theme . '/js/bower/fitvids/jquery.fitvids.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/hammerjs/dist/jquery.hammer.js"></script>';
         echo '<script src ="' . $theme . '/js/bower/flexslider/jquery.flexslider.js"></script>';
+        echo '<script src ="' . $theme . '/js/bower/jquery-form/jquery.form.js"></script>';
         echo '<script src ="' . $theme . '/js/plugins/jquery.spin.js"></script>';
         echo '<script src ="' . $theme . '/js/plugins/jquery.easing.js"></script>';
         echo '<script src ="' . $theme . '/js/plugins/wairForImages.js"></script>';
         echo '<script src ="' . $theme . '/js/plugins/superslides.js"></script>';
+        echo '<script src ="' . $theme . '/js/plugins/mailchimp-validation.js'
         echo '<script src ="' . $theme . '/js/project.js"></script>';
 
     }

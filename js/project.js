@@ -56,7 +56,6 @@
             $(".sitename a").on("click", function (e) { filmhouse.logoWasActioned(e); });
             $(".touch-info").on("click", function (e) { filmhouse.touchInfoWasActioned(e); });
             $(".tab-container button").on("click", function (e) { filmhouse.tabWasAction(e); });
-            $(".modal.follow #mc_signup_form, .modal.touch #mc_signup_form").on("submit", function (e) { filmhouse.mailchimpWasSubmitted(e); });
         },
 
         windowLoaded: function () {
@@ -88,32 +87,6 @@
                 $(".modal.touch #mc_mv_EMAIL, .modal.follow #mc_mv_EMAIL").attr("placeholder", "YOUR EMAIL");
                 $(".modal.touch #mc_mv_FNAME, .modal.follow #mc_mv_FNAME").attr("placeholder", "FIRST NAME");
                 $(".modal.touch #mc_mv_LNAME, .modal.follow #mc_mv_LNAME").attr("placeholder", "LAST NAME");
-            }
-        },
-
-        mailchimpWasSubmitted: function (e) {
-            var form = $(e.currentTarget);
-            var responses = [];
-
-            responses.push(form.find("#mc_mv_EMAIL").val());
-            responses.push(form.find("#mc_mv_FNAME").val());
-            responses.push(form.find("#mc_mv_LNAME").val());
-
-            function checkArray(my_arr) {
-                for (var i = 0; i < my_arr.length; i++) {
-                    if (my_arr[i] === "") {
-                        return false;
-                    }
-                }
-                return true;
-            }
-
-            if (checkArray(responses)) {
-                // got everything - lets submit it
-                return;
-            } else {
-                form.prepend("<p class=formerror>Sorry, all fields are required</p>");
-                e.preventDefault();
             }
         },
 

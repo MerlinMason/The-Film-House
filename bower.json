@@ -9,6 +9,7 @@
     "echojs": "~1.4.0",
     "fitvids": "~1.0.3",
     "jquery-hammerjs": "*",
-    "flexslider": "*"
+    "flexslider": "*",
+    "jquery-form": "~3.46.0"
   }
 }

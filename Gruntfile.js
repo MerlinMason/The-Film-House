@@ -72,10 +72,12 @@ module.exports = function (grunt) {
                     "js/bower/fitvids/jquery.fitvids.js",
                     "js/bower/hammerjs/dist/jquery.hammer.js",
                     "js/bower/flexslider/jquery.flexslider.js",
+                    "js/bower/jquery-form/jquery.form.js",
                     "js/plugins/jquery.spin.js",
                     "js/plugins/jquery.easing.js",
                     "js/plugins/waitForImages.js",
                     "js/plugins/superslides.js",
+                    "js/plugins/mailchimp-validation.js",
                     "js/project.js"
                 ],
                 dest: "js/production.js"
