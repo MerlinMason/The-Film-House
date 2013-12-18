@@ -94,20 +94,12 @@
             // Change our submit type from HTML (default) to JS
             $("#mc_submit_type").val("js");
 
-            // Attach our form submitter action
-            $("#mc_signup_form").ajaxForm({
-                url: mailchimpSF.ajax_url,
-                type: "POST",
-                dataType: "text",
-                beforeSubmit: mc_beforeForm,
-                success: mc_success
-            });
-
-            function mc_beforeForm() {
+            function beforeSubmit() {
                 // Disable the submit button
                 $("#mc_signup_submit").attr("disabled", "disabled");
             }
-            function mc_success(data) {
+
+            function onSuccess(data) {
                 // Re-enable the submit button
                 $("#mc_signup_submit").removeAttr("disabled");
 
@@ -123,6 +115,16 @@
                     $("#mc_submit_type").val("js");
                 }
             }
+
+            // Attach our form submitter action
+            $("#mc_signup_form").ajaxForm({
+                url: mailchimpSF.ajax_url,
+                type: "POST",
+                dataType: "text",
+                beforeSubmit: beforeSubmit,
+                success: onSuccess
+            });
+
         },
 
         launchPageModal: function (e) {
