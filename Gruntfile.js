@@ -77,7 +77,6 @@ module.exports = function (grunt) {
                     "js/plugins/jquery.easing.js",
                     "js/plugins/waitForImages.js",
                     "js/plugins/superslides.js",
-                    "js/plugins/mailchimp-validation.js",
                     "js/project.js"
                 ],
                 dest: "js/production.js"
