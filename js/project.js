@@ -239,9 +239,21 @@
                 // Vimeo options
                 var vimeoquery = "?title=0&byline=0&portrait=0&color=ffffff&autoplay=1&loop=0\"";
                 var vimeoid = $.trim($(e.currentTarget).data("video"));
-                var playerWidth = $(window).width() - 72;
-                var playerHeight = playerWidth * 9 / 16; // 9:16 ratio
-                var size = " width=\"" + playerWidth + "\" height=\"" + playerHeight + "\"";
+                var winW = $(window).width();
+                var winH = $(window).height();
+                var playerHeight;
+
+                // work out 9:16 ratio
+                var ratioHeight = winW * 9 / 16;
+
+                // check 9:16 ratio height isn't bigger than our window
+                if (ratioHeight > winH * 0.75) {
+                    playerHeight = winH * 0.75;
+                } else {
+                    playerHeight = ratioHeight;
+                }
+
+                var size = " width=\"" + winW + "\" height=\"" + playerHeight + "\"";
                 var embed = "<iframe class=\"player-frame\" src=\"//player.vimeo.com/video/" + vimeoid + vimeoquery + size + " frameborder=\"0\"></iframe>";
 
                 $(modal).prepend(embed);
