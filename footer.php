@@ -79,7 +79,7 @@
         echo '<script src ="' . $theme . '/js/bower/jquery-form/jquery.form.js"></script>';
         echo '<script src ="' . $theme . '/js/plugins/jquery.spin.js"></script>';
         echo '<script src ="' . $theme . '/js/plugins/jquery.easing.js"></script>';
-        echo '<script src ="' . $theme . '/js/plugins/wairForImages.js"></script>';
+        echo '<script src ="' . $theme . '/js/plugins/waitForImages.js"></script>';
         echo '<script src ="' . $theme . '/js/plugins/superslides.js"></script>';
         echo '<script src ="' . $theme . '/js/project.js"></script>';
 
