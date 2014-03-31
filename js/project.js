@@ -175,8 +175,10 @@
                     scrollTop: 0
                 }, 400, function () {
                     $(".modal:visible").fadeOut("fast", function () {
-                        // Remove modal content
-                        $(this).empty();
+                        // Remove video player if it's a video modal
+                        if ($(this).hasClass("media")) {
+                            $(this).empty();
+                        }
                         // reset the scroll stopper
                         $("body").css({ "overflow" : "auto" });
                         // hide the close button
